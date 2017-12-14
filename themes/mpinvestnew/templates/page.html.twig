@@ -1,0 +1,106 @@
+<div role="main" class="main">
+
+<!-- breadcrumb 
+
+<div class="brdcm_bs">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="brdcm_bs_title text-left">
+ 
+						{% if node.title.value %}
+					  <h2>{{ node.title.value }}</h2>
+						{% elseif page['#title'] %}
+ 					  <h2>{{ page['#title'] }}</h2>
+						{% endif %}
+						
+                        <div class="h-devider"></div>
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+            <ol class="breadcrumb">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">About us</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+</div>
+ breadcrumb --> 
+	
+<!--			<section class="page-header">
+					<div class="container">
+						 
+						<div class="row">
+							<div class="col-md-12">
+								<!-- <h1>Left Sidebar</h1> 
+								{{ page.content_title }} 
+								<div class="h-devider"></div>
+							</div>
+						</div>
+					</div>
+				</section> -->
+
+				
+
+				  {% if page.highlighted %}
+					<div id="highlighted-block">
+					  <div class="container">
+						<div class="row">
+						  <div class="col-sm-12">
+							{{ page.highlighted }}
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  {% endif %}
+
+				<div class="container">
+
+					<div class="row">
+						
+						{% if page.sidebar_first %}
+							<div class="col-md-3">
+								<aside class="sidebar">
+										{{ page.sidebar_first }} 
+
+																		
+										{{ page.secondary_menu }}
+										{{ page.header }}
+										{{ page.primary_menu }}
+								</aside>
+							</div>
+					   {% endif %} 
+
+
+						 
+						{% if page.sidebar_first %}
+						  {% set primary_col = 9 %}
+						{% else %}
+						  {% set primary_col = 12 %}
+						{% endif %}
+						<div class="{{ 'content-area col-sm-' ~ primary_col }}"> 
+
+							<div class="row">
+									{% if page.content_top %}
+									  <div id="content_top">
+										{{ page.content_top }}
+										{{ messages }}
+									  </div>
+									{% endif %}
+									<div id="content-wrap">
+									  {{ page.help }}
+									  {{ page.content }}
+									</div>
+							</div> 
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+ 

@@ -1,0 +1,1134 @@
+<?php
+
+/* themes/mpinvestnew/templates/page--front.html.twig */
+class __TwigTemplate_526e72240fcde7b300a094c382854cf8c901fca87798de752195e37fc2250466 extends Twig_Template
+{
+    public function __construct(Twig_Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->parent = false;
+
+        $this->blocks = array(
+        );
+    }
+
+    protected function doDisplay(array $context, array $blocks = array())
+    {
+        $tags = array();
+        $filters = array();
+        $functions = array();
+
+        try {
+            $this->env->getExtension('sandbox')->checkSecurity(
+                array(),
+                array(),
+                array()
+            );
+        } catch (Twig_Sandbox_SecurityError $e) {
+            $e->setTemplateFile($this->getTemplateName());
+
+            if ($e instanceof Twig_Sandbox_SecurityNotAllowedTagError && isset($tags[$e->getTagName()])) {
+                $e->setTemplateLine($tags[$e->getTagName()]);
+            } elseif ($e instanceof Twig_Sandbox_SecurityNotAllowedFilterError && isset($filters[$e->getFilterName()])) {
+                $e->setTemplateLine($filters[$e->getFilterName()]);
+            } elseif ($e instanceof Twig_Sandbox_SecurityNotAllowedFunctionError && isset($functions[$e->getFunctionName()])) {
+                $e->setTemplateLine($functions[$e->getFunctionName()]);
+            }
+
+            throw $e;
+        }
+
+        // line 1
+        echo "
+    
+    <div class=\"section-slider home-slider\" data-sub-height=\"180\">
+        <div class=\"flexslider advanced-slider slider\" data-options=\"animation:fade,controlNav:false\">
+            <ul class=\"slides\">
+                <li data-slider-anima=\"fade-bottom\" data-timeline=\"asc\" data-time=\"2000\">
+                    <div class=\"section-slide\">
+                        <div class=\"bg-cover\" style=\"background-image:url('/";
+        // line 8
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/banner/bg1.jpg')\"></div>
+                        <div class=\"container\">
+                            <div class=\"container-middle\">
+                                <div class=\"container-inner\">
+                                    <div class=\"home-slider-box anima\">
+                                        <h1 class=\"text-black text-xl white\">Welcome!</h1>
+                                        <h3 class=\"white\">to MP INVEST Portal</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-slider-anima=\"fade-bottom\" data-timeline=\"asc\" data-time=\"2000\">
+                    <div class=\"section-slide\">
+                        <div class=\"bg-cover\" style=\"background-image:url('/";
+        // line 23
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/banner/bg2.jpg')\"></div>
+                        <div class=\"container\">
+                            <div class=\"container-middle\">
+                                <div class=\"container-inner\">
+                                    <div class=\"home-slider-box anima\">
+                                        <h1 class=\"white\">One click Submission for over<br> 21 services</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-slider-anima=\"fade-bottom\" data-timeline=\"asc\" data-time=\"2000\">
+                    <div class=\"section-slide\">
+                        <div class=\"bg-cover\" style=\"background-image:url('/";
+        // line 37
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/banner/bg3.jpg')\"></div>
+                        <div class=\"container\">
+                            <div class=\"container-middle\">
+                                <div class=\"container-inner\">
+                                    <div class=\"home-slider-box anima\">
+                                        <h1 class=\"white\">Ease of Doing Business</h1>
+                                        <h3 class=\"white\">Top 5 Destination for Investment in India as per world bank and DIPP assessment for the year 2015 and 2016</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-slider-anima=\"fade-bottom\" data-timeline=\"asc\" data-time=\"2000\">
+                    <div class=\"section-slide\">
+                        <div class=\"bg-cover\" style=\"background-image:url('/";
+        // line 52
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/banner/bg4.jpg')\"></div>
+                        <div class=\"container\">
+                            <div class=\"container-middle\">
+                                <div class=\"container-inner\">
+                                    <div class=\"home-slider-box anima\">
+                                        <h1 class=\"white\">Ease of Doing Business</h1>
+                                        <h3 class=\"white\">Top 5 Destination for Investment in India as per world bank and DIPP assessment for the year 2015 and 2016</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <style>
+        
+
+
+    </style>
+    <section class=\"main-about\">
+    <div class=\"container-fluid\">
+        <div class=\"row mrgnup\">
+              <div class=\"col-md-3 col-sm-6 col-xs-12 single-about\">
+                  <i class=\"flaticon-placeholder-1\"></i>
+                  <h5>LAND APPLICATION FORM</h5><br>
+                  <p>MP Audyogik Kendra Vikas Nigam (AKVN) assist development ...
+                  </p>
+                  <!--<a class=\"morebtn\" onclick=\"myFunction()\">View more</a>-->
+                  <a class=\"lightbox morebtn\" href=\"#lapbtn\" data-lightbox-anima=\"show-scale\">
+                       View more
+                    </a>
+                    <div id=\"lapbtn\" class=\"box-lightbox mfp-hide\" style=\"padding: 25px; display: block;\">
+                        <div class=\"subtitle g\">
+                            <h4>Land Application Form </h4>
+                            <hr>
+                            <div class=\"row\">
+                            <div class=\"col-md-12\">
+                                <a class=\"img-box\">
+                                    <img class=\"anima\" src=\"/";
+        // line 93
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/banner/mp-land-bank1.jpg\" alt=\"\" style=\"width: 100%;margin: a auto;\">
+                                </a>
+                            </div>
+                            <div class=\"col-md-12\">
+                                <!--<h2><a>Consolidated Application Form : </a></h2>
+                                <hr>--><br>
+                                <p>State of Madhya Pradesh through its 7 AKVNs (Audhyogik Kendra Vikas
+                                    Nigam) facilitate the booking and possession of land in the state. Letter of Intent auto approved and
+                                    immediate In Principal acknowledgement is provided to the Investor. The entire process till issuance
+                                    of Letter of Possession is automated and the investor gets sms and email updates at each stage of
+                                    application processing
+                                </p>
+                                <a class=\"btn btn-sm\" href=\"http://www.invest.mp.gov.in/advancelandbookingakvn.action?\" target=\"_Blank\">Click to Land Application Form </a>
+                            </div>
+                            </div>
+                        </div> 
+                    </div>
+
+              </div>
+
+              <div class=\"col-md-3 col-sm-6 col-xs-12 single-about\">
+                <i class=\"flaticon-working\"></i>
+                <h5>KNOW YOUR APPROVALS</h5><br>
+                <p>To start a new Business or set an existing business and operation </p>
+                <!--<a class=\"morebtn\" onclick=\"myFunction()\">View more</a>-->
+                  <a class=\"lightbox morebtn\" href=\"#kyabtn\" data-lightbox-anima=\"show-scale\">
+                       View more
+                    </a>
+                    <div id=\"kyabtn\" class=\"box-lightbox mfp-hide\" style=\"padding: 25px; display: block;\">
+                        <div class=\"subtitle g\">
+                            <h4>KNOW YOUR APPROVALS </h4>
+                            <hr>
+                            <div class=\"row\">
+                            <div class=\"col-md-12\">
+                                <a class=\"img-box\">
+                                    <img class=\"anima\" src=\"/";
+        // line 128
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/banner/knowyourapprovals.jpg\" alt=\"\" style=\"width: 100%;margin: a auto;\">
+                                </a>
+                            </div>
+                            <div class=\"col-md-12\">
+                                <!--<h2><a>Consolidated Application Form : </a></h2>
+                                <hr>--><br>
+                                <p>Single Window System through its intuitive questionnaire provides the
+                                    investor a suggestive list of services that are required for starting a business and before beginning
+                                    the operations of the establishment. After registration, an investor can apply for one or more
+                                    services through single application form
+                                </p>
+                                <a class=\"btn btn-sm\" href=\"/backoffice/index.php?r=wizard/service\">Click to proceed for Approvals</a>
+                            </div>
+                            </div>
+                        </div> 
+                    </div>
+              </div>
+
+              <div class=\"col-md-3 col-sm-6 col-xs-12 single-about\">      
+                  <i class=\"flaticon-handshake-1\"></i>
+                  <h5>Incentive Policies</h5><br>
+                  <p>A common application across sectors to claim for incentives.</p>
+                  <!--<a class=\"morebtn\" onclick=\"myFunction()\">View more</a>-->
+                  <a class=\"lightbox morebtn\" href=\"#ipbtn\" data-lightbox-anima=\"show-scale\">
+                       View more
+                    </a>
+                    <div id=\"ipbtn\" class=\"box-lightbox mfp-hide\" style=\"padding: 25px; display: block;\">
+                        <div class=\"subtitle g\">
+                            <h4>Incentive Policies </h4>
+                            <hr>
+                            <div class=\"row\">
+                            <div class=\"col-md-12\">
+                                <a class=\"img-box\">
+                                    <img class=\"anima\" src=\"/";
+        // line 161
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/banner/incentives.jpg\" alt=\"\" style=\"width: 100%;margin: a auto;\">
+                                </a>
+                            </div>
+                            <div class=\"col-md-12\">
+                                <!--<h2><a>Consolidated Application Form : </a></h2>
+                                <hr>--><br>
+                                <p>To promote investment in the state of Madhya Pradesh, state offers lucrative
+                                    subsidies through its incentives and concession related policies. Details of exemptions as per scheme
+                                    and policies are available on the website. A common framework is used to generate simplistic form
+                                    for availing exemptions. In principle sanctions are avail under 'Fiscal Incentives as per policy' and
+                                    'financial incentives as per policy' for standard and customised packages respectively.
+                                </p> 
+                            </div>
+                            </div>
+                        </div> 
+                    </div>
+              </div>
+
+              <div class=\"col-md-3 col-sm-6 col-xs-12 single-about\">      
+                    <i class=\"flaticon-team\"></i>
+                  <h5>Consolidated Application Form</h5>
+                  <p>A single form for over 21 services across 5 departments. </p>
+                  <!--<a class=\"morebtn\" href=\"#\">View more</a>-->                  
+                    <a class=\"lightbox morebtn\" href=\"#cafbtn\" data-lightbox-anima=\"show-scale\">
+                       View more
+                    </a>
+                    <div id=\"cafbtn\" class=\"box-lightbox mfp-hide\" style=\"padding: 25px; display: block;\">
+                        <div class=\"subtitle g\">
+                            <h4>Consolidated Application Form : </h4>
+                            <hr>
+                            <div class=\"row\">
+                            <div class=\"col-md-12\">
+                                <a class=\"img-box\">
+                                    <img class=\"anima\" src=\"/";
+        // line 194
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/banner/Consolidated-Application-Form.jpg\" alt=\"\">
+                                </a>
+                            </div>
+                            <div class=\"col-md-12\">
+                                <!--<h2><a>Consolidated Application Form : </a></h2>
+                                <hr>-->
+                                <p>To actualize the concept of single window, a single form single
+                                submission approach must be adopted to provide ease of doing business for its investors. For setting
+                                up an establishment, the investor should be facilitated to know the approvals he/she would require
+                                to obtain. From this list of services, a dynamic form must be generated through which all these
+                                services are applied for. All these applications when applied through single platform and integrated
+                                on the dashboard provide investor complete and real time update of his approvals. The investor can
+                                communicate, share feedback, comments and clarifications to all departments through single
+                                dashboard.
+                                </p>
+                                <a class=\"btn btn-sm\" href=\"/backoffice/index.php?r=investor/register\">Proceed to register</a>
+                            </div>
+                        </div>
+                            <p class=\"sub\"></p>
+                        </div> 
+                    </div>
+               
+              </div>
+        
+        </div><!-- END ROW row mrgnup  -->
+    </div>
+</section>
+    
+
+ 
+    
+    <div class=\"section-bg-color howitworks\">
+        <div class=\"container\">
+            <div class=\"row\">
+                <div class=\"col-md-2 col-sm-4 col-xs-6\">
+                    <a href=\"#\">
+                    <div class=\"step_bx step_nxt\">
+                        <div class=\"step_ico\">
+                            <img src=\"/";
+        // line 232
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/process-wizard/st1.png\">
+                        </div>
+                        <div class=\"step_txt\">
+                            Investor Sign-in/Signup
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class=\"col-md-2 col-sm-4 col-xs-6\">
+                    <a href=\"#\">
+                    <div class=\"step_bx step_nxt\">
+                        <div class=\"step_ico\">
+                            <img src=\"/";
+        // line 245
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/process-wizard/st2.png\">
+                        </div>
+                        <div class=\"step_txt\">
+                            Add Project New & Existing
+
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class=\"col-md-2 col-sm-4 col-xs-6\">
+                    <a href=\"#\">
+                    <div class=\"step_bx step_nxt\">
+                        <div class=\"step_ico\">
+                            <img src=\"/";
+        // line 258
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/process-wizard/st3.png\">
+                        </div>
+                        <div class=\"step_txt\">Add Land Banks & Info</div>
+                    </div>
+                    </a>
+                </div>
+                <div class=\"col-md-2 col-sm-4 col-xs-6\">
+                    <a href=\"#\">
+                    <div class=\"step_bx step_nxt\">
+                        <div class=\"step_ico\">
+                            <img src=\"/";
+        // line 268
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/process-wizard/st4.png\">
+                        </div>
+                        <div class=\"step_txt\">Know your approvals</div>
+                    </div>
+                    </a>
+                </div>
+                <div class=\"col-md-2 col-sm-4 col-xs-6\">
+                    <a href=\"#\">
+                    <div class=\"step_bx step_nxt\">
+                        <div class=\"step_ico\">
+                            <img src=\"/";
+        // line 278
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/process-wizard/st5.png\">
+                        </div>
+                         <div class=\"step_txt\">Apply for Services</div>
+                    </div>
+                    </a>
+                </div>
+                <div class=\"col-md-2 col-sm-4 col-xs-6\">
+                    <a href=\"#\">
+                    <div class=\"step_bx\">
+                        <div class=\"step_ico\">
+                            <img src=\"/";
+        // line 288
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/process-wizard/st6.png\">
+                        </div>
+                        <div class=\"step_txt\">Claim your Incentives</div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class=\"section-empty pb-40\">
+        <div class=\"container\">
+            
+            <div class=\"row text-center\">
+                <div class=\"col-md-10 col-md-offset-1\">
+                    <h4>Madhya Pradesh Trade & Investment Facilitation Corporation Limited</h4>
+                    <div class=\"h-devider-center\"></div>
+                    <hr class=\"space m\" />
+                    <p class=\"text-s text-bold\">
+                        Madhya Pradesh Trade & Investment Facilitation Corporation Limited (TRIFAC) formerly known as Madhya Pradesh Export Corporation Limited, is a Company established under Companies Act 1956 and Wholly owned by Government of Madhya Pradesh. (Certificate of Incorporation) Since 2004, TRIFAC is functioning as Single Window Facilitation Centre for Investment promotion in Madhya Pradesh.
+                    </p>
+                    <hr class=\"space s\" />
+                    <hr class=\"space s\" />
+                </div>
+            </div>
+            
+            <div class=\"row\">
+                <div class=\"col-md-9 col-sm-12 cm_gv_spk\">
+                    <div class=\"flexslider slider nav-inner\" data-options=\"directionNav:false\">
+                        <ul class=\"slides\">
+                            <li>
+                                <div class=\"row\">
+                                    <div class=\"col-sm-3 p-0\">
+                                         <div class=\"cmimg\">
+                                         <!--<img src=\"assets/img/cm2.png\" class=\"img-responsive\" style=\"max-width: 220px\">-->
+                                             <div class=\"white cmimg_caption\">
+                                                 <div class=\"text-center\">
+                                                     <p class=\"cmn\">Shivraj Singh Chouhan</p>
+                                                     <p class=\"cmdg\"><small>Hon'ble Chief Minister<br>Madhya Pradesh</small></p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                    <div class=\"col-sm-9\">
+                                        <span>CM's Speaks</span>
+                                        <div class=\"title\">ABOUT TRIFAC</div>
+                                        <!--<div class=\"main-title\"></div>-->
+                                        <div class=\"text-justify\">
+                                        <p class=\"title_p\">\"Madhya Pradesh, the heart of incredible India, is one of the fastest growing economies in the country. With its business friendly policies and skilled labour force, we aspire to become the growth pillar of Make in India.\"</p>
+                                        <p class=\"title_p\">Madhya Pradesh will review its industrial policy to encourage private investment -- with concessions to woo investment in backward areas -- in a bid to counter the aggressive sales pitch of other states,</p>
+                                        </div>
+                                        <a href=\"/about-us\" class=\"morebtn\">Readmore</a>
+                                    </div>
+                                </div><!-- end row -->
+                                
+                            </li>
+                            <li>
+                                <div class=\"row\">
+                                    <div class=\"col-sm-3 p-0\">
+                                         <div class=\"gvimg\">
+                                            <!--<img src=\"assets/img/cm2.png\" class=\"img-responsive\" style=\"max-width: 220px\">-->
+                                             <div class=\"white cmimg_caption\">
+                                                 <div class=\"text-center\">
+                                                     <p class=\"cmn\">Shri Om Prakash Kohli</p>
+                                                     <p class=\"cmdg\"><small>Hon'ble Governer<br>Madhya Pradesh</small></p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                    <div class=\"col-sm-9\">
+                                        <span>Governer's Speak</span>
+                                        <div class=\"title\">ABOUT TRIFAC</div>
+                                        <!--<div class=\"main-title\"></div>-->
+                                        <div class=\"text-justify\">
+                                        <p class=\"title_p\">\"The government provides guarantee for the loans. It has started giving results. Many youngsters from poor backgrounds have developed themselves as successful entrepreneurs and industrialists.\"</p>
+                                        <p class=\"title_p\">\"If some states are aggressive, we change our policy accordingly. To encourage investment we will again review our policies before the next investors summit to be held in 2019 -- after the next assembly elections.\"</p>
+                                        </div>
+                                        <a href=\"/about-us\" class=\"morebtn\">Readmore</a>
+                                    </div>
+                                </div><!-- end row -->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class=\"col-md-3 col-sm-12 text-center homebcminvest\">
+                <div class=\"bcminvest\">
+                    <div class=\"row\">
+                        <div class=\"col-xs-12\">
+                            <div class=\"bcmbx\">
+                                 <img src=\"/";
+        // line 380
+        echo $this->env->getExtension('sandbox')->ensureToStringAllowed($this->env->getExtension('drupal_core')->escapeFilter($this->env, (isset($context["directory"]) ? $context["directory"] : null), "html", null, true));
+        echo "/images/banner/logo.png\" style=\"width: 80px;\">
+                                 <h5 class=\"white\">Become A Investor</h5>
+                                 <p class=\"white\">Less Investment, <br>More Return</p>
+                                 <a href=\"#\" class=\"morebtn\">Readmore</a>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                </div>
+                
+            </div>
+            
+            
+            
+            <div class=\"row\">
+                <!--<div class=\"col-md-2\">
+                    <div class=\"title-base text-right\">                        
+                    <hr class=\"anima\" />
+                    </div>
+                </div>-->
+                <!--<div class=\"col-md-6\">
+                    <h4>Madhya Pradesh Trade & Investment Facilitation Corporation Limited</h4>
+                    <div class=\"h-devider\"></div>
+                    <p class=\"text-s text-bold\">
+                        Madhya Pradesh Trade & Investment Facilitation Corporation Limited (TRIFAC) formerly known as Madhya Pradesh Export Corporation Limited, is a Company established under Companies Act 1956 and Wholly owned by Government of Madhya Pradesh. (Certificate of Incorporation) Since 2004, TRIFAC is functioning as Single Window Facilitation Centre for Investment promotion in Madhya Pradesh.
+                    </p>
+                    <hr class=\"space s\" />
+                    <a class=\"btn-text\" href=\"#\">Read more</a>
+                </div>
+                <div class=\"col-md-6\">
+                    <h4>Why Single Window System</h4>
+                    <div class=\"h-devider\"></div>
+                    <p class=\"text-s text-bold\">
+                        This System allows investor to apply online for various services offered by Commerce Industry and Employment Department like Land Allotment, Land Transfer, Land Booking, Building Permission, Water Allocation etc.
+                    </p>
+                    <hr class=\"space s\" />
+                    <a class=\"btn-text\" href=\"#\">Read more</a>
+                </div>-->
+            </div>
+            <hr class=\"space\" />
+            <table class=\"facilities_tbl grid-table border-table\"  data-anima=\"fade-bottom\" data-time=\"600\">
+                <tbody>
+                    <tr>
+                        <td class=\"indbbg_1\">
+                            <div class=\"icon-box icon-box-top-bottom\">
+                                <div class=\"icon-box-cell\">
+                                    <i class=\" text-xl im-digital-drawing\"></i>
+                                </div>
+                                <div class=\"icon-box-cell\">
+                                    <label class=\"text-m white\">Trade & Investment Facilitation</label>
+                                    <p class=\"text-s white\">Allotment of Land in Industrial Area, Water from Natural Resources are quite easy.</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class=\"indbbg_2\">
+                            <div class=\"icon-box icon-box-top-bottom\">
+                                <div class=\"icon-box-cell\">
+                                    <i class=\"im-biotech action-icon text-xl\"></i>
+                                </div><div class=\"icon-box-cell\"><label class=\"text-m white\">Less Investment, More Return</label>
+                                <p class=\"text-s white\">Online Land Booking at MP Pavilion at BCC.</p></div>
+                            </div>
+                        </td>
+                        <td class=\"indbbg_3\">
+                            <div class=\"icon-box icon-box-top-bottom\">
+                                <div class=\"icon-box-cell\">
+                                    <i class=\"im-bar-chart5 text-xl\"></i>
+                                </div><div class=\"icon-box-cell\"><label class=\"text-m white\">Apply online for various services</label>
+                                <p class=\"text-s white\">We witnessed a radical transformation in terms of economic and social development.</p></div>
+                            </div>
+                        </td>
+                        <td class=\"indbbg_4\">
+                            <div class=\"icon-box icon-box-top-bottom\">
+                                <div class=\"icon-box-cell\">
+                                    <i class=\"im-gentleman text-xl\"></i>
+                                </div><div class=\"icon-box-cell\"><label class=\"text-m white\">Fruitful Services</label>
+                                <p class=\"text-s white\">We are having favourable polices, acts & rules to develop your business.</p></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
+    
+    <div class=\"section-empty\">
+        <div class=\"container content\">
+            <div class=\"row\">
+                <div class=\"col-md-12\">
+                    <div class=\"text-center\">
+                        <h4>OUR MISSION</h4>
+                        <div class=\"h-devider-center\"></div>
+                    </div>
+                </div>
+                
+            </div>
+            
+                <div class=\"gap30\"></div>
+            <div class=\"row\">
+                <div class=\"col-md-4\">
+                    <ul class=\"fa-ul\">
+                        <li><i class=\"fa-li im-paper-plane\"></i> Agriculture,Irrigation and Diversification</li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Education </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Public Health </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Empowerment of Women </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Skill Development  </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Inclusive Growth  </li>
+                    </ul>
+                </div>
+                <div class=\"col-md-4\">
+                    <ul class=\"fa-ul\">
+                        <li><i class=\"fa-li im-paper-plane\"></i> Water Supply - Urban and Rural </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Roads, Power Supply & Renewable Energy  </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Public Transport  </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Urban Housing & Habitat Development  </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Rural Housing & Habitat Development   </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Job Creation and Investment Promotion   </li>
+                    </ul>
+                </div>
+                <div class=\"col-md-4\">
+                    <ul class=\"fa-ul\">
+                        <li><i class=\"fa-li im-paper-plane\"></i> Environment Management  </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Sports  </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Culture, Heritage and Tourism </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Good Governance  </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+";
+    }
+
+    public function getTemplateName()
+    {
+        return "themes/mpinvestnew/templates/page--front.html.twig";
+    }
+
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  466 => 380,  371 => 288,  358 => 278,  345 => 268,  332 => 258,  316 => 245,  300 => 232,  259 => 194,  223 => 161,  187 => 128,  149 => 93,  105 => 52,  87 => 37,  70 => 23,  52 => 8,  43 => 1,);
+    }
+
+    public function getSource()
+    {
+        return "
+    
+    <div class=\"section-slider home-slider\" data-sub-height=\"180\">
+        <div class=\"flexslider advanced-slider slider\" data-options=\"animation:fade,controlNav:false\">
+            <ul class=\"slides\">
+                <li data-slider-anima=\"fade-bottom\" data-timeline=\"asc\" data-time=\"2000\">
+                    <div class=\"section-slide\">
+                        <div class=\"bg-cover\" style=\"background-image:url('/{{ directory }}/images/banner/bg1.jpg')\"></div>
+                        <div class=\"container\">
+                            <div class=\"container-middle\">
+                                <div class=\"container-inner\">
+                                    <div class=\"home-slider-box anima\">
+                                        <h1 class=\"text-black text-xl white\">Welcome!</h1>
+                                        <h3 class=\"white\">to MP INVEST Portal</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-slider-anima=\"fade-bottom\" data-timeline=\"asc\" data-time=\"2000\">
+                    <div class=\"section-slide\">
+                        <div class=\"bg-cover\" style=\"background-image:url('/{{ directory }}/images/banner/bg2.jpg')\"></div>
+                        <div class=\"container\">
+                            <div class=\"container-middle\">
+                                <div class=\"container-inner\">
+                                    <div class=\"home-slider-box anima\">
+                                        <h1 class=\"white\">One click Submission for over<br> 21 services</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-slider-anima=\"fade-bottom\" data-timeline=\"asc\" data-time=\"2000\">
+                    <div class=\"section-slide\">
+                        <div class=\"bg-cover\" style=\"background-image:url('/{{ directory }}/images/banner/bg3.jpg')\"></div>
+                        <div class=\"container\">
+                            <div class=\"container-middle\">
+                                <div class=\"container-inner\">
+                                    <div class=\"home-slider-box anima\">
+                                        <h1 class=\"white\">Ease of Doing Business</h1>
+                                        <h3 class=\"white\">Top 5 Destination for Investment in India as per world bank and DIPP assessment for the year 2015 and 2016</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-slider-anima=\"fade-bottom\" data-timeline=\"asc\" data-time=\"2000\">
+                    <div class=\"section-slide\">
+                        <div class=\"bg-cover\" style=\"background-image:url('/{{ directory }}/images/banner/bg4.jpg')\"></div>
+                        <div class=\"container\">
+                            <div class=\"container-middle\">
+                                <div class=\"container-inner\">
+                                    <div class=\"home-slider-box anima\">
+                                        <h1 class=\"white\">Ease of Doing Business</h1>
+                                        <h3 class=\"white\">Top 5 Destination for Investment in India as per world bank and DIPP assessment for the year 2015 and 2016</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <style>
+        
+
+
+    </style>
+    <section class=\"main-about\">
+    <div class=\"container-fluid\">
+        <div class=\"row mrgnup\">
+              <div class=\"col-md-3 col-sm-6 col-xs-12 single-about\">
+                  <i class=\"flaticon-placeholder-1\"></i>
+                  <h5>LAND APPLICATION FORM</h5><br>
+                  <p>MP Audyogik Kendra Vikas Nigam (AKVN) assist development ...
+                  </p>
+                  <!--<a class=\"morebtn\" onclick=\"myFunction()\">View more</a>-->
+                  <a class=\"lightbox morebtn\" href=\"#lapbtn\" data-lightbox-anima=\"show-scale\">
+                       View more
+                    </a>
+                    <div id=\"lapbtn\" class=\"box-lightbox mfp-hide\" style=\"padding: 25px; display: block;\">
+                        <div class=\"subtitle g\">
+                            <h4>Land Application Form </h4>
+                            <hr>
+                            <div class=\"row\">
+                            <div class=\"col-md-12\">
+                                <a class=\"img-box\">
+                                    <img class=\"anima\" src=\"/{{ directory }}/images/banner/mp-land-bank1.jpg\" alt=\"\" style=\"width: 100%;margin: a auto;\">
+                                </a>
+                            </div>
+                            <div class=\"col-md-12\">
+                                <!--<h2><a>Consolidated Application Form : </a></h2>
+                                <hr>--><br>
+                                <p>State of Madhya Pradesh through its 7 AKVNs (Audhyogik Kendra Vikas
+                                    Nigam) facilitate the booking and possession of land in the state. Letter of Intent auto approved and
+                                    immediate In Principal acknowledgement is provided to the Investor. The entire process till issuance
+                                    of Letter of Possession is automated and the investor gets sms and email updates at each stage of
+                                    application processing
+                                </p>
+                                <a class=\"btn btn-sm\" href=\"http://www.invest.mp.gov.in/advancelandbookingakvn.action?\" target=\"_Blank\">Click to Land Application Form </a>
+                            </div>
+                            </div>
+                        </div> 
+                    </div>
+
+              </div>
+
+              <div class=\"col-md-3 col-sm-6 col-xs-12 single-about\">
+                <i class=\"flaticon-working\"></i>
+                <h5>KNOW YOUR APPROVALS</h5><br>
+                <p>To start a new Business or set an existing business and operation </p>
+                <!--<a class=\"morebtn\" onclick=\"myFunction()\">View more</a>-->
+                  <a class=\"lightbox morebtn\" href=\"#kyabtn\" data-lightbox-anima=\"show-scale\">
+                       View more
+                    </a>
+                    <div id=\"kyabtn\" class=\"box-lightbox mfp-hide\" style=\"padding: 25px; display: block;\">
+                        <div class=\"subtitle g\">
+                            <h4>KNOW YOUR APPROVALS </h4>
+                            <hr>
+                            <div class=\"row\">
+                            <div class=\"col-md-12\">
+                                <a class=\"img-box\">
+                                    <img class=\"anima\" src=\"/{{ directory }}/images/banner/knowyourapprovals.jpg\" alt=\"\" style=\"width: 100%;margin: a auto;\">
+                                </a>
+                            </div>
+                            <div class=\"col-md-12\">
+                                <!--<h2><a>Consolidated Application Form : </a></h2>
+                                <hr>--><br>
+                                <p>Single Window System through its intuitive questionnaire provides the
+                                    investor a suggestive list of services that are required for starting a business and before beginning
+                                    the operations of the establishment. After registration, an investor can apply for one or more
+                                    services through single application form
+                                </p>
+                                <a class=\"btn btn-sm\" href=\"/backoffice/index.php?r=wizard/service\">Click to proceed for Approvals</a>
+                            </div>
+                            </div>
+                        </div> 
+                    </div>
+              </div>
+
+              <div class=\"col-md-3 col-sm-6 col-xs-12 single-about\">      
+                  <i class=\"flaticon-handshake-1\"></i>
+                  <h5>Incentive Policies</h5><br>
+                  <p>A common application across sectors to claim for incentives.</p>
+                  <!--<a class=\"morebtn\" onclick=\"myFunction()\">View more</a>-->
+                  <a class=\"lightbox morebtn\" href=\"#ipbtn\" data-lightbox-anima=\"show-scale\">
+                       View more
+                    </a>
+                    <div id=\"ipbtn\" class=\"box-lightbox mfp-hide\" style=\"padding: 25px; display: block;\">
+                        <div class=\"subtitle g\">
+                            <h4>Incentive Policies </h4>
+                            <hr>
+                            <div class=\"row\">
+                            <div class=\"col-md-12\">
+                                <a class=\"img-box\">
+                                    <img class=\"anima\" src=\"/{{ directory }}/images/banner/incentives.jpg\" alt=\"\" style=\"width: 100%;margin: a auto;\">
+                                </a>
+                            </div>
+                            <div class=\"col-md-12\">
+                                <!--<h2><a>Consolidated Application Form : </a></h2>
+                                <hr>--><br>
+                                <p>To promote investment in the state of Madhya Pradesh, state offers lucrative
+                                    subsidies through its incentives and concession related policies. Details of exemptions as per scheme
+                                    and policies are available on the website. A common framework is used to generate simplistic form
+                                    for availing exemptions. In principle sanctions are avail under 'Fiscal Incentives as per policy' and
+                                    'financial incentives as per policy' for standard and customised packages respectively.
+                                </p> 
+                            </div>
+                            </div>
+                        </div> 
+                    </div>
+              </div>
+
+              <div class=\"col-md-3 col-sm-6 col-xs-12 single-about\">      
+                    <i class=\"flaticon-team\"></i>
+                  <h5>Consolidated Application Form</h5>
+                  <p>A single form for over 21 services across 5 departments. </p>
+                  <!--<a class=\"morebtn\" href=\"#\">View more</a>-->                  
+                    <a class=\"lightbox morebtn\" href=\"#cafbtn\" data-lightbox-anima=\"show-scale\">
+                       View more
+                    </a>
+                    <div id=\"cafbtn\" class=\"box-lightbox mfp-hide\" style=\"padding: 25px; display: block;\">
+                        <div class=\"subtitle g\">
+                            <h4>Consolidated Application Form : </h4>
+                            <hr>
+                            <div class=\"row\">
+                            <div class=\"col-md-12\">
+                                <a class=\"img-box\">
+                                    <img class=\"anima\" src=\"/{{ directory }}/images/banner/Consolidated-Application-Form.jpg\" alt=\"\">
+                                </a>
+                            </div>
+                            <div class=\"col-md-12\">
+                                <!--<h2><a>Consolidated Application Form : </a></h2>
+                                <hr>-->
+                                <p>To actualize the concept of single window, a single form single
+                                submission approach must be adopted to provide ease of doing business for its investors. For setting
+                                up an establishment, the investor should be facilitated to know the approvals he/she would require
+                                to obtain. From this list of services, a dynamic form must be generated through which all these
+                                services are applied for. All these applications when applied through single platform and integrated
+                                on the dashboard provide investor complete and real time update of his approvals. The investor can
+                                communicate, share feedback, comments and clarifications to all departments through single
+                                dashboard.
+                                </p>
+                                <a class=\"btn btn-sm\" href=\"/backoffice/index.php?r=investor/register\">Proceed to register</a>
+                            </div>
+                        </div>
+                            <p class=\"sub\"></p>
+                        </div> 
+                    </div>
+               
+              </div>
+        
+        </div><!-- END ROW row mrgnup  -->
+    </div>
+</section>
+    
+
+ 
+    
+    <div class=\"section-bg-color howitworks\">
+        <div class=\"container\">
+            <div class=\"row\">
+                <div class=\"col-md-2 col-sm-4 col-xs-6\">
+                    <a href=\"#\">
+                    <div class=\"step_bx step_nxt\">
+                        <div class=\"step_ico\">
+                            <img src=\"/{{ directory }}/images/process-wizard/st1.png\">
+                        </div>
+                        <div class=\"step_txt\">
+                            Investor Sign-in/Signup
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class=\"col-md-2 col-sm-4 col-xs-6\">
+                    <a href=\"#\">
+                    <div class=\"step_bx step_nxt\">
+                        <div class=\"step_ico\">
+                            <img src=\"/{{ directory }}/images/process-wizard/st2.png\">
+                        </div>
+                        <div class=\"step_txt\">
+                            Add Project New & Existing
+
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class=\"col-md-2 col-sm-4 col-xs-6\">
+                    <a href=\"#\">
+                    <div class=\"step_bx step_nxt\">
+                        <div class=\"step_ico\">
+                            <img src=\"/{{ directory }}/images/process-wizard/st3.png\">
+                        </div>
+                        <div class=\"step_txt\">Add Land Banks & Info</div>
+                    </div>
+                    </a>
+                </div>
+                <div class=\"col-md-2 col-sm-4 col-xs-6\">
+                    <a href=\"#\">
+                    <div class=\"step_bx step_nxt\">
+                        <div class=\"step_ico\">
+                            <img src=\"/{{ directory }}/images/process-wizard/st4.png\">
+                        </div>
+                        <div class=\"step_txt\">Know your approvals</div>
+                    </div>
+                    </a>
+                </div>
+                <div class=\"col-md-2 col-sm-4 col-xs-6\">
+                    <a href=\"#\">
+                    <div class=\"step_bx step_nxt\">
+                        <div class=\"step_ico\">
+                            <img src=\"/{{ directory }}/images/process-wizard/st5.png\">
+                        </div>
+                         <div class=\"step_txt\">Apply for Services</div>
+                    </div>
+                    </a>
+                </div>
+                <div class=\"col-md-2 col-sm-4 col-xs-6\">
+                    <a href=\"#\">
+                    <div class=\"step_bx\">
+                        <div class=\"step_ico\">
+                            <img src=\"/{{ directory }}/images/process-wizard/st6.png\">
+                        </div>
+                        <div class=\"step_txt\">Claim your Incentives</div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class=\"section-empty pb-40\">
+        <div class=\"container\">
+            
+            <div class=\"row text-center\">
+                <div class=\"col-md-10 col-md-offset-1\">
+                    <h4>Madhya Pradesh Trade & Investment Facilitation Corporation Limited</h4>
+                    <div class=\"h-devider-center\"></div>
+                    <hr class=\"space m\" />
+                    <p class=\"text-s text-bold\">
+                        Madhya Pradesh Trade & Investment Facilitation Corporation Limited (TRIFAC) formerly known as Madhya Pradesh Export Corporation Limited, is a Company established under Companies Act 1956 and Wholly owned by Government of Madhya Pradesh. (Certificate of Incorporation) Since 2004, TRIFAC is functioning as Single Window Facilitation Centre for Investment promotion in Madhya Pradesh.
+                    </p>
+                    <hr class=\"space s\" />
+                    <hr class=\"space s\" />
+                </div>
+            </div>
+            
+            <div class=\"row\">
+                <div class=\"col-md-9 col-sm-12 cm_gv_spk\">
+                    <div class=\"flexslider slider nav-inner\" data-options=\"directionNav:false\">
+                        <ul class=\"slides\">
+                            <li>
+                                <div class=\"row\">
+                                    <div class=\"col-sm-3 p-0\">
+                                         <div class=\"cmimg\">
+                                         <!--<img src=\"assets/img/cm2.png\" class=\"img-responsive\" style=\"max-width: 220px\">-->
+                                             <div class=\"white cmimg_caption\">
+                                                 <div class=\"text-center\">
+                                                     <p class=\"cmn\">Shivraj Singh Chouhan</p>
+                                                     <p class=\"cmdg\"><small>Hon'ble Chief Minister<br>Madhya Pradesh</small></p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                    <div class=\"col-sm-9\">
+                                        <span>CM's Speaks</span>
+                                        <div class=\"title\">ABOUT TRIFAC</div>
+                                        <!--<div class=\"main-title\"></div>-->
+                                        <div class=\"text-justify\">
+                                        <p class=\"title_p\">\"Madhya Pradesh, the heart of incredible India, is one of the fastest growing economies in the country. With its business friendly policies and skilled labour force, we aspire to become the growth pillar of Make in India.\"</p>
+                                        <p class=\"title_p\">Madhya Pradesh will review its industrial policy to encourage private investment -- with concessions to woo investment in backward areas -- in a bid to counter the aggressive sales pitch of other states,</p>
+                                        </div>
+                                        <a href=\"/about-us\" class=\"morebtn\">Readmore</a>
+                                    </div>
+                                </div><!-- end row -->
+                                
+                            </li>
+                            <li>
+                                <div class=\"row\">
+                                    <div class=\"col-sm-3 p-0\">
+                                         <div class=\"gvimg\">
+                                            <!--<img src=\"assets/img/cm2.png\" class=\"img-responsive\" style=\"max-width: 220px\">-->
+                                             <div class=\"white cmimg_caption\">
+                                                 <div class=\"text-center\">
+                                                     <p class=\"cmn\">Shri Om Prakash Kohli</p>
+                                                     <p class=\"cmdg\"><small>Hon'ble Governer<br>Madhya Pradesh</small></p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                    <div class=\"col-sm-9\">
+                                        <span>Governer's Speak</span>
+                                        <div class=\"title\">ABOUT TRIFAC</div>
+                                        <!--<div class=\"main-title\"></div>-->
+                                        <div class=\"text-justify\">
+                                        <p class=\"title_p\">\"The government provides guarantee for the loans. It has started giving results. Many youngsters from poor backgrounds have developed themselves as successful entrepreneurs and industrialists.\"</p>
+                                        <p class=\"title_p\">\"If some states are aggressive, we change our policy accordingly. To encourage investment we will again review our policies before the next investors summit to be held in 2019 -- after the next assembly elections.\"</p>
+                                        </div>
+                                        <a href=\"/about-us\" class=\"morebtn\">Readmore</a>
+                                    </div>
+                                </div><!-- end row -->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class=\"col-md-3 col-sm-12 text-center homebcminvest\">
+                <div class=\"bcminvest\">
+                    <div class=\"row\">
+                        <div class=\"col-xs-12\">
+                            <div class=\"bcmbx\">
+                                 <img src=\"/{{ directory }}/images/banner/logo.png\" style=\"width: 80px;\">
+                                 <h5 class=\"white\">Become A Investor</h5>
+                                 <p class=\"white\">Less Investment, <br>More Return</p>
+                                 <a href=\"#\" class=\"morebtn\">Readmore</a>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+                </div>
+                
+            </div>
+            
+            
+            
+            <div class=\"row\">
+                <!--<div class=\"col-md-2\">
+                    <div class=\"title-base text-right\">                        
+                    <hr class=\"anima\" />
+                    </div>
+                </div>-->
+                <!--<div class=\"col-md-6\">
+                    <h4>Madhya Pradesh Trade & Investment Facilitation Corporation Limited</h4>
+                    <div class=\"h-devider\"></div>
+                    <p class=\"text-s text-bold\">
+                        Madhya Pradesh Trade & Investment Facilitation Corporation Limited (TRIFAC) formerly known as Madhya Pradesh Export Corporation Limited, is a Company established under Companies Act 1956 and Wholly owned by Government of Madhya Pradesh. (Certificate of Incorporation) Since 2004, TRIFAC is functioning as Single Window Facilitation Centre for Investment promotion in Madhya Pradesh.
+                    </p>
+                    <hr class=\"space s\" />
+                    <a class=\"btn-text\" href=\"#\">Read more</a>
+                </div>
+                <div class=\"col-md-6\">
+                    <h4>Why Single Window System</h4>
+                    <div class=\"h-devider\"></div>
+                    <p class=\"text-s text-bold\">
+                        This System allows investor to apply online for various services offered by Commerce Industry and Employment Department like Land Allotment, Land Transfer, Land Booking, Building Permission, Water Allocation etc.
+                    </p>
+                    <hr class=\"space s\" />
+                    <a class=\"btn-text\" href=\"#\">Read more</a>
+                </div>-->
+            </div>
+            <hr class=\"space\" />
+            <table class=\"facilities_tbl grid-table border-table\"  data-anima=\"fade-bottom\" data-time=\"600\">
+                <tbody>
+                    <tr>
+                        <td class=\"indbbg_1\">
+                            <div class=\"icon-box icon-box-top-bottom\">
+                                <div class=\"icon-box-cell\">
+                                    <i class=\" text-xl im-digital-drawing\"></i>
+                                </div>
+                                <div class=\"icon-box-cell\">
+                                    <label class=\"text-m white\">Trade & Investment Facilitation</label>
+                                    <p class=\"text-s white\">Allotment of Land in Industrial Area, Water from Natural Resources are quite easy.</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class=\"indbbg_2\">
+                            <div class=\"icon-box icon-box-top-bottom\">
+                                <div class=\"icon-box-cell\">
+                                    <i class=\"im-biotech action-icon text-xl\"></i>
+                                </div><div class=\"icon-box-cell\"><label class=\"text-m white\">Less Investment, More Return</label>
+                                <p class=\"text-s white\">Online Land Booking at MP Pavilion at BCC.</p></div>
+                            </div>
+                        </td>
+                        <td class=\"indbbg_3\">
+                            <div class=\"icon-box icon-box-top-bottom\">
+                                <div class=\"icon-box-cell\">
+                                    <i class=\"im-bar-chart5 text-xl\"></i>
+                                </div><div class=\"icon-box-cell\"><label class=\"text-m white\">Apply online for various services</label>
+                                <p class=\"text-s white\">We witnessed a radical transformation in terms of economic and social development.</p></div>
+                            </div>
+                        </td>
+                        <td class=\"indbbg_4\">
+                            <div class=\"icon-box icon-box-top-bottom\">
+                                <div class=\"icon-box-cell\">
+                                    <i class=\"im-gentleman text-xl\"></i>
+                                </div><div class=\"icon-box-cell\"><label class=\"text-m white\">Fruitful Services</label>
+                                <p class=\"text-s white\">We are having favourable polices, acts & rules to develop your business.</p></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
+    
+    <div class=\"section-empty\">
+        <div class=\"container content\">
+            <div class=\"row\">
+                <div class=\"col-md-12\">
+                    <div class=\"text-center\">
+                        <h4>OUR MISSION</h4>
+                        <div class=\"h-devider-center\"></div>
+                    </div>
+                </div>
+                
+            </div>
+            
+                <div class=\"gap30\"></div>
+            <div class=\"row\">
+                <div class=\"col-md-4\">
+                    <ul class=\"fa-ul\">
+                        <li><i class=\"fa-li im-paper-plane\"></i> Agriculture,Irrigation and Diversification</li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Education </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Public Health </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Empowerment of Women </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Skill Development  </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Inclusive Growth  </li>
+                    </ul>
+                </div>
+                <div class=\"col-md-4\">
+                    <ul class=\"fa-ul\">
+                        <li><i class=\"fa-li im-paper-plane\"></i> Water Supply - Urban and Rural </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Roads, Power Supply & Renewable Energy  </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Public Transport  </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Urban Housing & Habitat Development  </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Rural Housing & Habitat Development   </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Job Creation and Investment Promotion   </li>
+                    </ul>
+                </div>
+                <div class=\"col-md-4\">
+                    <ul class=\"fa-ul\">
+                        <li><i class=\"fa-li im-paper-plane\"></i> Environment Management  </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Sports  </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Culture, Heritage and Tourism </li>
+                        <li><i class=\"fa-li im-paper-plane\"></i> Good Governance  </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+";
+    }
+}

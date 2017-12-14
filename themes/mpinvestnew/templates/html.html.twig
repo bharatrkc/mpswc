@@ -1,0 +1,384 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display the basic html structure of a single
+ * Drupal page.
+ *
+ * Variables:
+ * - $css: An array of CSS files for the current page.
+ * - $language: (object) The language the site is being displayed in.
+ *   $language->language contains its textual representation.
+ *   $language->dir contains the language direction. It will either be 'ltr' or
+ *   'rtl'.
+ * - $rdf_namespaces: All the RDF namespace prefixes used in the HTML document.
+ * - $grddl_profile: A GRDDL profile allowing agents to extract the RDF data.
+ * - $head_title: A modified version of the page title, for use in the TITLE
+ *   tag.
+ * - $head_title_array: (array) An associative array containing the string parts
+ *   that were used to generate the $head_title variable, already prepared to be
+ *   output as TITLE tag. The key/value pairs may contain one or more of the
+ *   following, depending on conditions:
+ *   - title: The title of the current page, if any.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site, if any, and if there is no title.
+ * - $head: Markup for the HEAD section (including meta tags, keyword tags, and
+ *   so on).
+ * - $styles: Style tags necessary to import all CSS files for the page.
+ * - $scripts: Script tags necessary to load the JavaScript files and settings
+ *   for the page.
+ * - $page_top: Initial markup from any modules that have altered the
+ *   page. This variable should always be output first, before all other dynamic
+ *   content.
+ * - $page: The rendered page content.
+ * - $page_bottom: Final closing markup from any modules that have altered the
+ *   page. This variable should always be output last, after all other dynamic
+ *   content.
+ * - $classes String of classes that can be used to style contextually through
+ *   CSS.
+ *
+ * @ingroup templates
+ *
+ * @see bootstrap_preprocess_html()
+ * @see template_preprocess()
+ * @see template_preprocess_html()
+ * @see template_process()
+ */
+#}
+{%
+  set body_classes = [
+    logged_in ? 'user-logged-in',
+    not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+    node_type ? 'page-node-type-' ~ node_type|clean_class,
+    db_offline ? 'db-offline',
+    theme.settings.navbar_position ? 'navbar-is-' ~ theme.settings.navbar_position,
+    theme.has_glyphicons ? 'has-glyphicons',
+  ]
+%}
+<!DOCTYPE html>
+<html {{ html_attributes }}>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <head-placeholder token="{{ placeholder_token|raw }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token|raw }}">
+    <js-placeholder token="{{ placeholder_token|raw }}">
+	<style>
+	.navbar-nav > li > .dropdown-menu {
+      width: auto;
+	}
+</style>
+
+	<link rel="apple-touch-icon" sizes="76x76" href="{{ directory }}/images/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ directory }}/images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ directory }}/images/favicons/favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ directory }}/images/favicons/favi.png">
+  </head>
+
+  <body{{ attributes.addClass(body_classes) }}>
+     <a href="#main-content" class="visually-hidden focusable skip-link">
+      {{ 'Skip to main content'|t }}
+    </a>
+
+    {{ page_top }}
+
+	<div id="preloader"></div>
+   
+<div id="top-bar">
+    <div class="container-fluid top-navigation">
+        <div class="row">
+            <div class="col-md-6">
+                    <div class="logo-section">
+                        <div class="row">
+                            <div class="col-md-12">
+                            <img src="/{{ directory }}/images/logos/newlogo.png" class="logo">
+                            </div>                            
+                        </div>
+                    </div>
+            </div><!-- end col-md-6 -->
+
+            <div class="col-md-6 hidden-xs">            
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <ul class="clearfix top_menu">
+                                <li class="fac_desk">
+                                    <a class="invslogin"  href="/"> <i class="fa fa-send"></i> Facilitation Desk</a>
+                                    <div class="fac_desk_item">
+                                        <span class="text-left"><b>General:</b></span><br>
+                                        <a href="#" class="text-left" style="color: #d08346;">failitation@mptrifac.org</a><br>
+                                        <span class="text-left"><b>Country Desk:</b></span><br>
+                                        <a href="#" class="text-left" style="color: #d08346;">Japan:  japandesk@mpgov.in</a><br>
+                                        <a href="#" class="text-left" style="color: #d08346;">Korea:  koreadesk@mpgov.in </a>
+                                    </div>
+                                </li>
+                                <li><a class="invslogin" href="/faqs"><i class="fa fa-quora"></i>  FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pt-15">
+                            <!--<ul class="clearfix top_menu">
+                                <li>
+                                    <a href="/"><i class="fa fa-phone"></i> Contact us</a>
+                                </li>
+                                <li>
+                                    <a href="/"><i class="now-ui-icons travel_info"></i> About Us</a>
+                                </li>
+                                <li class="fac_desk">
+                                    <a href="/"> <i class="fa fa-send"></i> Facilitation Desk</a>
+                                    <div class="fac_desk_item">
+                                        <span class="text-left"><b>General:</b></span><br>
+                                        <a href="#" class="text-left" style="color: #d08346;">failitation@mptrifac.org</a><br>
+                                        <span class="text-left"><b>Country Desk:</b></span><br>
+                                        <a href="#" class="text-left" style="color: #d08346;">Japan:  japandesk@mpgov.in</a><br>
+                                        <a href="#" class="text-left" style="color: #d08346;">Korea:  koreadesk@mpgov.in </a>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="/faqs"> <i class="fa fa-lightbulb-o"></i> F.A.Q</a>
+                                </li>
+                            </ul>-->
+                            <p class="white text-right"> <i class="fa fa-phone"></i> Helpdesk No: +91-755-2559971</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end col-md-6 -->
+        </div><!-- end row -->
+    </div><!-- end container-fluid -->
+</div>   
+
+<nav class="navbar navbar-default main_nav"  data-spy="affix" data-offset-top="197">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="home_ico navbar-brand" href="{{ url('<front>') }}"><i class="fa fa-home"></i> </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+          
+        
+        <li><a href="/about-us">About</a></li>
+          
+          
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ease of Doing Business <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/list-of-pre-establishment-state-approvals" title="List of Pre Establishment State Approvals / Permissions you may require to start a business / industry">List of Pre Establishment State Approvals</a></li>
+            <li><a href="/list-of-pre-operations-state-approvals" title="List of Pre-Operations State Approvals / Permissions you may require to start a business / industry">List of Pre-Operations State Approvals</a></li>
+            <li><a href="{{ url('<front>') }}backoffice/index.php?r=wizard/service" title="Online Query for State Approvals /Permissions you may require to start a business / industry">Online Query for State Approvals</a></li>
+          </ul>
+        </li>
+          
+          
+          
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Advantage in MP <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+				<li><a href="/advantage-mp/mp-at-glance">MP at a Glance</a></li>
+				<li><a href="/advantagemp/VISION_2018_ENGLISH.pdf" target="_Blank">MP Vision 2018</a></li>
+				<li><a href="/advantage-mp/industrial-scenario">Industrial Scenario of MP</a></li>
+				<li><a href="/advantage-mp/profiles-of-potential-sector">Profiles of Potential Sector</a></li>
+				<li><a href="/advantage-mp/incentives-and-concessions">Incentives and Concessions</a></li>
+				<li><a href="/advantage-mp/investment-facilitation">Investment Facilitation</a></li>
+				<li><a href="/advantage-mp/investors-information">Investors Information</a></li>
+			</ul>
+        </li>
+        
+        <li> <a href="/policy_act&rules">Policy Act & Rules</a> </li>
+          
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Manual<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/citizencharter/citizencharter.pdf" target="_Blank">Citizen Charter</a></li>
+            <li><a href="/usermanuals/swsportal.pdf" target="_Blank">SWS Portal</a></li>
+			<li><a href="/usermanuals/akvnwater.pdf" target="_Blank">AKVN Water</a></li>
+			<li><a href="/usermanual/boilerregistration.pdf" target="_Blank">Boiler Registration</a></li>
+			<li><a href="/usermanual/boilerinspection.pdf" target="_Blank">Boiler Inspection</a></li> 
+          </ul>
+        </li>
+          
+          
+      </ul>
+        
+      <ul class="nav navbar-nav navbar-right">
+        <!--<li><a href="#" class="loginbtn white">Dashboard</a></li> -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle loginbtn white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;Login <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/backoffice/index.php?r=site/login">As an Investor</a></li>
+            <li><a href="/backoffice/index.php?r=site/login">Department User</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/backoffice/index.php?r=investor/register">Signup</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- End navigation -->   
+
+    {{ page }}
+	
+	<div>&nbsp;<br>&nbsp;<br></div>		
+
+      <footer class="footer-minimal">
+        <div class=" ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 footer-left">
+                        <h4 class="white">ABOUT US</h4>
+                        <div class="h-devider"></div>
+                        <hr class="space s">
+                        <img src="/{{ directory }}/images/logos/newlogo.png" alt="logo">
+                        <hr class="space s">
+                        <p style="font-size: 12px">
+                            
+Madhya Pradesh Trade & Investment Facilitation Corporation Limited (TRIFAC) formerly known as Madhya Pradesh Export Corporation Limited, is a Company established under Companies Act 1956 and Wholly owned by Government of Madhya Pradesh...<a href="about_us.html">more</a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 footer-left">
+                        <h4 class="white">CONTACTS</h4>
+                        <div class="h-devider"></div>
+                        <hr class="space s">
+                        <ul class="fa-ul">
+                            <li><i class="fa-li im-map-marker2"></i> "CEDMAP BHAWAN" 16-A, Arera Hills Bhopal - 462001, M.P(India)</li>
+                            <li><i class="fa-li im-cloud-smartphone"></i> +91-755-2575618, 2571830<br>+91-755-2559973</li>                 <li><i class="fa-li im-speach-bubble12"></i> facilitation@mptrifac.org</li>
+                            <li><i class="fa-li im-phone"></i>Helpdesk : +91-755-2559971 (10:30 AM to 05:30 PM)</li>
+                        </ul>
+                        <div class="btn-group navbar-social">
+                            <div class="btn-group social-group">
+                                <a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
+                                <a target="_blank" href="#"><i class="fa fa-twitter"></i></a>
+                                <a target="_blank" href="#"><i class="fa fa-instagram"></i></a>
+                                <a target="_blank" href="#"><i class="fa fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="white">INFOMATIONS</h4>
+                        <div class="h-devider"></div>
+                        <hr class="space s">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="fa-ul">
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Home</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Company</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Certifications</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Company</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Core Values</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="fa-ul">
+                                    <li><i class="fa-li im-right-3"></i> <a href="/faqs">Faq</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Manuals</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Locations</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Privacy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+          <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                  <p class="white text-center">© 2017 M.P. Trade and Investment Facilitation Corporation Limited. &nbsp; <span class="pull-right"> &nbsp; Designed by <a href="#">E&Y</a></span> </p>
+                </div>
+            </div>      
+          </div>
+        </div>
+    </footer> 
+    
+    
+    <!-- use this for popup-->
+    <style>
+#mask {
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+}  
+#boxes .window {
+  position:absolute;
+  left:0;
+  top:0;
+  width:440px;
+  height:200px;
+  display:none;
+  z-index:9999;
+  padding:20px;
+  border-radius: 15px;
+  text-align: center;
+}
+#boxes #dialog {
+  width:450px; 
+  height:auto;
+  padding:10px;
+  background-color:#ffffff;
+  font-family: 'Segoe UI Light', sans-serif;
+  font-size: 15pt;
+}
+.maintext{
+    text-align: center;
+  font-family: "Segoe UI", sans-serif;
+  text-decoration: none;
+}
+body{
+  background: url('bg.jpg');
+}
+#lorem{
+	font-family: "Segoe UI", sans-serif;
+	font-size: 12pt;
+  text-align: left;
+}
+#popupfoot{
+	font-family: "Segoe UI", sans-serif;
+	font-size: 16pt;
+  padding: 10px 20px;
+}
+
+    </style>
+<!--
+
+<div id="boxes">
+  <div style="top: 199.5px; left: 551.5px; display: none;" id="dialog" class="window">Welcomes to
+    <div id="lorem">
+      <p> Madhya Pradesh Trade & Investment Facilitation Corporation Limited </p>
+    </div>
+      
+      <div class="pull-right">
+          <button class="btn btn-primary">Ragister Now</button>
+          
+          <button class="btn btn-info">Skip</button>
+      </div>
+  </div>
+  <div style="width: 1478px; font-size: 32pt; color:white; height: 602px; display: none; opacity: 0.8;" id="mask"></div>
+</div>
+-->
+    {{ page_bottom }}
+
+    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+  </body>
+</html>

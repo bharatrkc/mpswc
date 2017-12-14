@@ -1,0 +1,144 @@
+<?php
+use yii\web\View;
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\widgets\Breadcrumbs;
+use app\assets\AppAsset; 
+use yii\widgets\ActiveForm;
+use yii\helpers\Url;
+ 
+$this->title = 'Services selection manually'; 
+$this->params['breadcrumbs'][] = $this->title; 
+?>
+<style>
+.container-fluid{margin:0px;border:0px;}
+.row-bordered{border-bottom:1px solid #ccc;}
+.col{border-bottom:1px solid #ccc;padding:8px 10px;min-height: 60px;}
+.fa-list{font-size:20px;}
+</style>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2><?php echo $this->title; ?></h2>		
+		<?= Breadcrumbs::widget([
+			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+		]) ?> 
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight"> 
+
+<div class="form-investor">
+	<div class="portlet box green">
+		<div class="portlet-title">
+			<div class="caption"><i class="fa fa-list"></i><?= Html::encode($this->title) ?></div>
+			<div class="tools"> </div>
+		</div>
+		<div class="portlet-body"> 
+
+
+<div style="width:740px;margin:0px auto;">
+
+<?php 
+	$form = ActiveForm::begin([ 'options' => ['class' => 'form-horizontal'],]);
+?>
+	<div class="row">&nbsp;<br></div>
+	<div><strong>List of Services to apply:</strong> </div>
+	<div class="row"> 
+		<div class="col-lg-1 col"><strong>#</strong> </div>
+		<div class="col-lg-9 col"><strong>Service Name</strong> </div> 
+		<div class="col-lg-2 col"><strong><a href="javascript:void()" id="select-all">Select All</a></strong> </div> 
+	</div>
+	<?php
+	$i = 0;
+	foreach ($services_manual as $services_man):
+ 	//echo '<pre>'; print_r($investorproject_detail); exit;
+		$i++;
+		$service_id = $services_man['id'];
+		if(!isset($investorproject_service[$service_id]['name'])) { ?>
+
+			<div class="row"> 
+				<div class="col-lg-1 col"><?php print $i; ?></div> 
+				<div class="col-lg-9 col"><?php echo $services_man['services']; ?></div>  
+				<div class="col-lg-2 col"> 
+					<input type="checkbox" name="services[]" value="<?= $services_man['id']; ?>" class="service"/>
+				</div>
+			</div>
+			
+		<?php 
+		}
+		else { 
+					$disabled = '';
+					$checked = '';
+					$img = '';
+					 
+					if($investorproject_service[$service_id]['projectdetail']['status']) {
+						$disabled = 'disabled';
+						$checked = 'checked'; 
+					}
+
+					if($investorproject_service[$service_id]['projectdetail']['completed']) { 
+						$img = '<img src="images/apply.png" style="width:20px;"/>';
+					}
+					?>
+					<div class="row"> 
+						<div class="col-lg-1 col"><?php print $i; ?></div> 
+						<div class="col-lg-9 col"><?php if(isset($investorproject_service[$service_id]['name'])) { print $investorproject_service[$service_id]['name']; } ?></div>  
+						<div class="col-lg-2 col">
+						
+							<input type="checkbox" name="services[]" value="<?= $service_id; ?>" <?= $disabled ?> <?= $checked ?>/>&nbsp;&nbsp;<?= $img?>
+						</div>
+				   </div>
+					
+					<?php  
+		}
+	endforeach; 
+	?>
+	<p>&nbsp;<br>&nbsp;<br></p>
+	<div class="row">
+		<div class=" col-md-2 col-md-offset-10">
+		   <?= Html::submitButton('Apply', ['class' => 'btn btn-primary']) ?>
+		</div>
+	</div>
+	<?php ActiveForm::end(); ?>
+
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+<?php
+$this->registerJs(
+'
+$(document).ready(function(){
+ 
+	
+	$("#select-all").click(function() {
+
+		if($(this).text() == "Select All") {
+			$(".service").prop("checked", true);
+			$(this).text("Reset");
+		} else {
+			$(".service").prop("checked", false);
+			$(this).text("Select All");
+		}
+	}); 
+});
+
+$(".service").click(function() {
+	 $("#select-all").prop("checked", false);
+});
+
+
+
+', View::POS_READY, 'my-button-handler');
+
+?>

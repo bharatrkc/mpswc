@@ -1,0 +1,58 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "{{%service_building_plan_approval_by_akvn}}".
+ *
+ * @property integer $id
+ * @property integer $project_id
+ * @property string $engineer
+ * @property string $engineer_license_no
+ * @property string $whether_land_is_diverted
+ * @property string $purpose_of_construction
+ * @property string $approval_from_town_and_country_planning_department
+ */
+class ServiceBuildingPlanApprovalByAkvn extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%service_building_plan_approval_by_akvn}}';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['project_id', 'engineer', 'engineer_license_no', 'whether_land_is_diverted', 'purpose_of_construction', 'approval_from_town_and_country_planning_department'], 'required'],
+            [['project_id'], 'integer'],
+            [['engineer', 'engineer_license_no', 'whether_land_is_diverted', 'purpose_of_construction', 'approval_from_town_and_country_planning_department'], 'string', 'max' => 255],
+
+			/*
+			[['engineer', 'engineer_license_no', 'whether_land_is_diverted', 'purpose_of_construction', 'approval_from_town_and_country_planning_department'], 'match', 'pattern' => '/^[-\w\s\,]+$/', 'message' => 'Special characters not allowed'], *
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'project_id' => 'Project ID',
+            'engineer' => 'Engineer/Architect',
+            'engineer_license_no' => 'Engineer/Architect\'s license no',
+            'whether_land_is_diverted' => 'Whether land is diverted',
+            'purpose_of_construction' => 'Purpose Of Construction',
+            'approval_from_town_and_country_planning_department' => 'Approval from Town and Country Planning Department',
+        ];
+    }
+}

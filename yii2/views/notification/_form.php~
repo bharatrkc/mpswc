@@ -1,0 +1,65 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use yii\web\View; 
+
+/* @var $this yii\web\View */
+/* @var $model app\models\Notification */
+/* @var $form yii\widgets\ActiveForm */
+?>
+		<div class="row">
+			<div class="notification-form">
+
+			    <?php $form = ActiveForm::begin(); ?>
+
+			    <div class="col-lg-6">
+				<?= $form->field($model, 'caf_id')->textInput(['id' => 'cafData']) ?>
+			    </div>
+			    <div class="col-lg-6">
+			    <?= $form->field($model, 'user_id')->textInput() ?>
+					</div>
+			    <div class="col-lg-6">
+			    <?= $form->field($model, 'notification_detail')->textarea(['rows' => 6]) ?>
+					</div>
+			    <div class="col-lg-6">
+			    <?= $form->field($model, 'date_created')->textInput() ?>
+					</div>
+			    <div class="col-lg-12">
+			    <div class="form-group">
+				<?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+				    </div>
+			</div>
+			    <?php ActiveForm::end(); ?>
+
+			</div>
+		</div>
+<?php 
+  
+$this->registerJs( 
+' 
+$(document).ready(function () { 
+               $("#cafData").change(function () { 
+           alert("vcvvg"); 
+                   sendFirstCategory(); 
+               }); 
+           }); 
+ 
+       function sendFirstCategory() { 
+           var id = $("#cafData").val(); 
+           $.ajax({ 
+               type: "POST", 
+               url: "'.Yii::$app->getUrlManager()->createUrl("notification/ajax").'", 
+               data: {id: id}, 
+               success: function (test) { 
+                   alert(test); 
+               }, 
+               error: function (exception) { 
+                   alert(exception); 
+               } 
+           }) 
+           ; 
+       }', View::POS_READY, 'district-ajax'); 
+ 
+ 
+?> 

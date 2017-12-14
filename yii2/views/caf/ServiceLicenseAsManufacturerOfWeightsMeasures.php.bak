@@ -1,0 +1,298 @@
+<?php
+use yii\web\View;  
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use yii\captcha\Captcha; 
+use yii\helpers\Url;
+use yii\widgets\Breadcrumbs;
+  
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar; 
+use app\assets\AppAsset;   
+use yii\helpers\ArrayHelper;  
+use yii\jui\DatePicker;
+
+use app\models\State;
+use app\models\Country;
+use app\models\District;
+use app\models\City;
+use app\models\Town;
+use app\models\Tehsil;
+
+$this->title = 'Electricity Connection (HT)'; 
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<style>
+.container-fluid{margin:0px;border:0px;}
+.row-bordered{border-bottom:1px solid #ccc;}
+.col{border-bottom:1px solid #ccc;padding:8px 10px;min-height: 40px;}
+.fa-list{font-size:20px;}
+ 
+.hasDatepicker {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	box-shadow: none!important;
+	outline: 0!important;
+}
+
+
+.control-label {
+    margin-top: 1px;
+    font-weight: 400;
+    width: 200px;
+	text-align:right;
+    vertical-align: top;
+}
+.hasDatepicker, .form-control, .form-group .bootstrap-select.btn-group {
+    display: inline-block;
+    width: 300px; 
+	height: auto;
+    padding: 3px 6px;
+}
+.bootstrap-select>.dropdown-toggle.bs-placeholder {
+
+}
+.btn { 
+    padding: 3px 6px;
+}
+
+.has-error .help-block{ 
+    padding-left: 210px;
+} 
+h3 {
+    font-size: 15px;
+    background-color: #32c5d2;
+    padding: 5px;
+	color:#fff;
+}
+
+
+
+.steps { 
+  padding: 0;
+  overflow: hidden;
+}
+.steps a {
+  color: white;
+  text-decoration: none;
+}
+.steps em {
+  display: block;
+  font-size: 11px;
+  font-weight: normal;
+}
+.steps li {
+  float: left;
+  margin-left: 0;
+  width: 150px; /* 100 / number of steps */
+  height: 80px; /* total height */
+  list-style-type: none;
+  padding: 5px 5px 5px 30px; /* padding around text, last should include arrow width */
+  border-right: 3px solid white; /* width: gap between arrows, color: background of document */
+  position: relative;
+}
+/* remove extra padding on the first object since it doesn't have an arrow to the left */
+.steps li:first-child {
+  padding-left: 5px;
+}
+/* white arrow to the left to "erase" background (starting from the 2nd object) */
+.steps li:nth-child(n+2)::before {
+  position: absolute;
+  top:0;
+  left:0;
+  display: block;
+  border-left: 25px solid white; /* width: arrow width, color: background of document */
+  border-top: 40px solid transparent; /* width: half height */
+  border-bottom: 40px solid transparent; /* width: half height */
+  width: 0;
+  height: 0;
+  content: " ";
+}
+/* colored arrow to the right */
+.steps li::after {
+  z-index: 1; /* need to bring this above the next item */
+  position: absolute;
+  top: 0;
+  right: -25px; /* arrow width (negated) */
+  display: block;
+  border-left: 25px solid #7c8437; /* width: arrow width */
+  border-top: 40px solid transparent; /* width: half height */
+  border-bottom: 40px solid transparent; /* width: half height */
+  width:0;
+  height:0;
+  content: " ";
+}
+
+/* Setup colors (both the background and the arrow) */
+
+/* Completed */
+.steps li { background-color: #7C8437; margin-top:10px; }
+.steps li::after { border-left-color: #7c8437; }
+
+/* Current */
+.steps li.current { background-color: #C36615; }
+.steps li.current::after { border-left-color: #C36615; }
+
+/* Following */
+.steps li.current ~ li { background-color: #EBEBEB; }
+.steps li.current ~ li::after { border-left-color: #EBEBEB; }
+
+/* Hover for completed and current */
+.steps li:hover {background-color: #696}
+.steps li:hover::after {border-left-color: #696}
+
+</style>
+<?php
+$form = ActiveForm::begin(); 
+
+//$investor_project[0]
+?>
+<div role="main" class="main">
+	<section class="">
+			<div class="row">
+				<div class="col-md-12">
+					<?php /* Breadcrumbs::widget([
+						'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+					]) */ 
+					echo $steps;
+					?>
+				</div>
+			</div>
+	</section>
+ </div>
+
+<?php
+
+foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
+	echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
+}
+
+?>
+<div class="container-fluid">
+
+	<div class="portlet box green">
+		<div class="portlet-title">
+			<div class="caption"><i class="fa fa-list"></i>License as Manufacturer of Weights & Measures</div>
+			<div class="tools"> </div>
+		</div> 
+		<div class="portlet-body">  
+		<div class="row"> 
+			<div class="col-lg-6">  
+					<?= $form->field($model, 'date_of_establishment_of_workshop')->widget(DatePicker::classname(), ['dateFormat' => 'dd-MM-yyyy', 'class' => 'form-control'])->label('Date of establishment of workshop/factory'); ?>
+			</div> 
+		</div>  
+
+		<div class="row"> 
+			<h3>The types of weights and measures proposed to be manufactured viz</h3>
+			<div class="col-lg-6">
+					<?= $form->field($model, 'types_of_weights_and_measures')->textInput(['maxlength' => true])->label("Measures"); ?>
+			</div>
+			<div class="col-lg-6">
+					<?= $form->field($model, 'types_of_weights_and_measures_instruments')->textInput(['maxlength' => true])->label("Weighing instruments"); ?>
+			</div>
+		</div>  
+
+		<div class="row"> 
+			<div class="col-lg-6">
+					<?= $form->field($model, 'types_of_weights_and_measures_instruments_details')->textInput(['maxlength' => true])->label("Measuring instruments with details in each case"); ?>
+			</div>
+		</div>  
+
+		<div class="row"> 
+			<h3>The number of persons employed/proposed to be employed</h3>
+			<div class="col-lg-6">  
+					<?= $form->field($model, 'number_of_persons_employed_semi_skilled')->textInput(['maxlength' => true])->label('Semi-skilled'); ?>
+			</div> 
+			<div class="col-lg-6">  
+					<?= $form->field($model, 'number_of_persons_employed_semi_unskilled')->textInput(['maxlength' => true])->label('Unskilled'); ?>
+			</div> 
+		</div>  
+
+		<div class="row"> 
+			<div class="col-lg-6">  
+					<?= $form->field($model, 'number_of_persons_employed_specialist')->textInput(['maxlength' => true])->label('Specialist trained in line'); ?>
+			</div> 
+		</div>  
+
+		<div class="row"> 
+
+
+			<div class="col-lg-6">
+					<?= $form->field($model, 'monogram_trademark')->textInput(['maxlength' => true])->label("The monogram/trademark intended to be imprinted on weights and measures to be manufactured"); ?>
+			</div>
+		</div>    
+		<div class="row"> 
+			<div class="col-lg-6">  
+					<?= $form->field($model, 'details_of_machinery')->textInput(['maxlength' => true])->label('Details of machinery, tools, accessories owned and used for manufacturing weights and measures etc.'); ?>
+			</div> 
+			<div class="col-lg-6">
+					<?= $form->field($model, 'details_of_foundry')->textInput(['maxlength' => true])->label("Details of foundry or workshop facilities arranged. Whether ownership or long term lease etc."); ?>
+			</div>
+		</div>    
+		<div class="row"> 
+			<div class="col-lg-6">  
+					<?= $form->field($model, 'facilities_of_steel_casting')->textInput(['maxlength' => true])->label('Facilities of steel casting and hardness testing of vital parts etc. Or other means'); ?>
+			</div> 
+			<div class="col-lg-6">  
+					<?= $form->field($model, 'availability_of_electrical_energy')->textInput(['maxlength' => true])->label('Availability of electrical energy'); ?>
+			</div>  
+		</div>   
+
+		<div class="row"> 
+			<div class="col-lg-6">  
+					<?= $form->field($model, 'whether_any_loan_received')->textInput(['maxlength' => true])->label('Whether any loan received from government or financial institution. If yes give details'); ?>
+			</div> 
+			<div class="col-lg-6">  
+					<?= $form->field($model, 'name_of_bankers')->textInput(['maxlength' => true])->label('Name of bankers if any'); ?>
+			</div>  
+		</div> 
+		<div class="row"> 
+			<div class="col-lg-6">  
+					<?= $form->field($model, 'vat_number')->textInput(['maxlength' => true])->label('Vat number/cst number/professional tax registration number/it number'); ?>
+			</div> 
+			<div class="col-lg-6">  
+					<?= $form->field($model, 'have_you_applied_previously_for_a_manufacturer_license')->textInput(['maxlength' => true])->label('Have you applied previously for a manufacturer\'s license? If yes when with what result.'); ?>
+			</div>  
+		</div>
+		<div class="row"> 
+			<div class="col-lg-6">
+					<?= $form->field($model, 'whether_the_item_proposed_to_be_manufactured')->textInput(['maxlength' => true])->label('Whether the item(s) proposed to be manufactured will be sold within the state/outside the state;
+When can you produce for inspection samples of your products for which license are desired?'); ?>
+			</div> 
+		</div>   
+
+	</div>
+	</div>   
+		<div class="form-group">
+			<?= Html::submitButton('Next', ['class' => 'btn btn-primary']) ?>
+		</div>
+
+		<?php ActiveForm::end(); ?>
+</div>
+<?php
+if($disabled) {
+	$this->registerJs(
+	'$(document).ready(function(){
+		$("input").attr("disabled", true);
+		$("select").attr("disabled", true);
+		$("textarea").attr("disabled", true);
+		$("#investorprojects-other_sector").prop("disabled", true);
+		$(".form-group .btn").parent().html("");
+	});
+	', View::POS_READY, 'my-button-handler2');
+}
+?>

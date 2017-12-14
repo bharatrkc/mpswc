@@ -1,0 +1,107 @@
+<?php
+
+namespace app\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "{{%service_electricity_connection_ht}}".
+ *
+ * @property integer $id
+ * @property integer $project_id
+ * @property string $type_of_connection_ht_lt
+ * @property string $application_type
+ * @property string $type_of_electric_connection
+ * @property string $category_of_electric_connection
+ * @property string $khasra_no
+ * @property string $area
+ * @property string $colony
+ * @property string $pincode
+ * @property string $district
+ * @property string $block
+ * @property string $panchayat
+ * @property string $ward
+ * @property string $type_of_connection_govt_private
+ * @property string $end_date_of_registration
+ * @property string $bank_name
+ * @property string $ifsc_code
+ * @property string $account_no
+ * @property string $re_account_no
+ * @property string $required_load
+ * @property string $required_voltage
+ * @property string $created
+ * @property string $updated
+ */
+class ServiceElectricityConnectionHt extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%service_electricity_connection_ht}}';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['project_id', 'type_of_connection_ht_lt', 'type_of_electric_connection', 'category_of_electric_connection', 'khasra_no', 'colony', 'pincode', 'district', 'block', 'panchayat', 'ward', 'type_of_connection_govt_private', 'end_date_of_registration', 'bank_name', 'ifsc_code', 'account_no', 're_account_no', 'required_load', 'required_voltage'], 'required'],
+
+            [['created', 'updated'], 'safe'],
+            [['type_of_connection_ht_lt', 'application_type', 'type_of_electric_connection', 'category_of_electric_connection', 'khasra_no', 'colony', 'district', 'block', 'panchayat', 'ward', 'type_of_connection_govt_private', 'bank_name', 'ifsc_code', 'required_voltage'], 'string', 'max' => 255],
+
+			
+            [['project_id',  'area', 'pincode', 'account_no', 're_account_no', 'required_load'], 'integer'],
+				
+			
+			[['type_of_connection_ht_lt', 'type_of_electric_connection', 'category_of_electric_connection', 'khasra_no', 'colony', 'pincode', 'district', 'block', 'panchayat', 'ward', 'type_of_connection_govt_private', 'end_date_of_registration', 'bank_name', 'ifsc_code', 'account_no', 're_account_no', 'required_load', 'required_voltage'], 'match', 'pattern' => '/^[-\w\s\,]+$/', 'message' => 'Special characters not allowed'], 
+
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'project_id' => 'Project ID',
+            'type_of_connection_ht_lt' => 'Type Of Connection Ht Lt',
+            'application_type' => 'Application Type',
+            'type_of_electric_connection' => 'Type Of Electric Connection',
+            'category_of_electric_connection' => 'Category Of Electric Connection',
+            'khasra_no' => 'Khasra No',
+            'area' => 'Area',
+            'colony' => 'Colony',
+            'pincode' => 'Pincode',
+            'district' => 'District',
+            'block' => 'Block',
+            'panchayat' => 'Panchayat',
+            'ward' => 'Ward',
+            'type_of_connection_govt_private' => 'Type Of Connection Govt Private',
+            'end_date_of_registration' => 'End Date Of Registration',
+            'bank_name' => 'Bank Name',
+            'ifsc_code' => 'Ifsc Code',
+            'account_no' => 'Account No',
+            're_account_no' => 'Re Account No',
+            'required_load' => 'Required Load',
+            'required_voltage' => 'Required Voltage',
+            'created' => 'Created',
+            'updated' => 'Updated',
+        ];
+    }
+	
+
+	public function beforeSave($insert = true) {
+		
+		if(isset($this->end_date_of_registration)) {
+			$this->end_date_of_registration = date('Y-m-d', strtotime($this->end_date_of_registration)); 
+		} 
+ 
+		return parent::beforeSave($insert);
+	}
+}

@@ -1,0 +1,333 @@
+<?php
+
+/* @var $this \yii\web\View */
+/* @var $content string */
+
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\widgets\Breadcrumbs;
+use app\assets\AppAsset;
+use yii\helpers\Url;
+
+AppAsset::register($this);
+
+Yii::$app->cache->flush();
+?>
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html lang="<?= Yii::$app->language ?>">
+<head>
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?= Html::csrfMetaTags() ?>
+    <title><?= Html::encode($this->title) ?></title>
+    <?php $this->head() ?>
+	
+	<!-- Web Fonts  -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css"> 
+
+	<script src="minimal/plugins/jquery.min.2.1.4.js"></script>
+    <link rel="stylesheet" href="minimal/plugins/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="minimal/plugins/font-awesome/css/font-awesome.css">
+    <script src="minimal/script.js"></script>
+    <link rel="stylesheet" href="minimal/style.css">
+    <link rel="stylesheet" href="minimal/plugins/my-flat-icon/my-icon.css">
+    <link rel="stylesheet" href="minimal/css/content-box.css">
+    <link rel="stylesheet" href="minimal/css/image-box.css">
+    <link rel="stylesheet" href="minimal/css/animations.css">
+    <link rel="stylesheet" href='minimal/css/components.css'>
+    <link rel="stylesheet" href='minimal/plugins/flexslider/flexslider.css'>
+    <link rel="stylesheet" href='minimal/plugins/magnific-popup.css'>
+    <link rel="stylesheet" href='minimal/plugins/php/contact-form.css'>
+    <link rel="stylesheet" href='minimal/plugins/social.stream.css'>
+    <link rel="icon" href="minimal/images/favicon.png">
+    <link rel="stylesheet" href="minimal/skin.css"><!-- Extra optional content header -->
+    <link href="minimal/mycustom.css" rel="stylesheet">
+
+    <link href="minimal/customforms.css" rel="stylesheet">
+
+	<script src="js/angular.min.js"></script>
+	
+	 <style>
+		[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+		  display: none !important;
+		}
+  </style>
+</head>
+<body>
+<?php $this->beginBody() ?>
+
+
+<?php  
+//if($_SERVER['QUERY_STRING'] != '' && $_SERVER['QUERY_STRING'] != 'r=site%2Findex') { ?>
+<div id="preloader"></div>
+   
+<div id="top-bar" style="clear:both;">
+    <div class="container-fluid top-navigation">
+        <div class="row">
+            <div class="col-md-6">
+                    <div class="logo-section">
+                        <div class="row">
+                            <div class="col-md-12">
+                            <img src="minimal/images/logos/newlogo.png" class="logo">
+                            </div>                            
+                        </div>
+                    </div>
+            </div><!-- end col-md-6 -->
+
+            <div class="col-md-6">            
+                <div class="pull-right">
+                    <ul class="clearfix top_menu">
+                        <!--<li>
+                            <a href=""><i class="fa fa-phone"></i> Contact us</a>
+                        </li>
+                        <li>
+                            <a href=""><i class="now-ui-icons travel_info"></i> About Us</a>
+                        </li>-->
+                        <li class="fac_desk">
+                            <a href=""> <i class="fa fa-send"></i> Facilitation Desk</a>
+                            <div class="fac_desk_item">
+                                <span class="text-left"><b>General:</b></span><br>
+                                <a href="#" class="text-left" style="color: #d08346;">failitation@mptrifac.org</a><br>
+                                <span class="text-left"><b>Country Desk:</b></span><br>
+                                <a href="#" class="text-left" style="color: #d08346;">Japan:  japandesk@mpgov.in</a><br>
+                                <a href="#" class="text-left" style="color: #d08346;">Korea:  koreadesk@mpgov.in </a>
+                            </div>
+                        </li>
+
+                        <li>
+                           <a href="/faq"> <i class="fa fa-lightbulb-o"></i> F.A.Q</a>
+                        </li>
+
+                        <!--<li>
+                            <a class="invslogin" href="#" data-toggle="modal" data-target="#myModal"> <i class="now-ui-icons users_circle-08"></i> Dep. Login</a>
+                        </li>-->
+                        <style>
+                        
+                        </style>
+                        <li>
+                            <!-- <a class="invslogin" href="#" data-toggle="modal" data-target=".bs-example-modal-sm"> <i class="fa fa-user"></i> Login</a> -->
+                            
+                            <!-- Small modal -->
+
+                            <div class="modal fade bs-example-modal-sm " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal_login modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title white text-center" id="myModalLabel">Login now</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style>
+                                            
+                                        </style>
+                                        	<div class="loginform">
+
+                                              <div class="tab-box" data-tab-anima="fade-right">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="current-active active">
+															<a href="/">Home</a>
+														</li>
+                                                        <li class=""><a href="#">
+                                                        Profile</a></li>
+                                                    </ul>
+                                                    <div class="panel active fade-right">
+                                                        123
+                                                        nisi ut aliquip ex ea coSed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                    </div>
+                                                    <div class="panel fade-right">
+                                                        456
+                                                        nisi ut aliquip ex ea coSed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- end col-md-6 -->
+        </div><!-- end row -->
+    </div><!-- end container-fluid -->
+</div>    
+    
+
+<nav class="navbar navbar-default main_nav"  data-spy="affix" data-offset-top="197">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="home_ico navbar-brand" href="/"><i class="fa fa-home"></i> </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/about-us">About Us</a></li>
+          
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ease of Doing Business<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/list-of-pre-establishment-state-approvals">List of Pre Establishment State Approvals / Permissions you may require to start a business / industry</a></li>
+            <li><a href="/list-of-pre-operations-state-approvals">List of Pre-Operations State Approvals / Permissions you may require to start a business / industry</a></li>
+            <li><a href="/backoffice/index.php?r=wizard/service">Online Query for State Approvals /Permissions you may require to start a business / industry</a></li>
+          </ul>
+        </li>
+          
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User Manuals<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/citizencharter/citizencharter.pdf" target="_Blank">Citizen Charter</a></li>
+            <li><a href="/usermanuals/swsportal.pdf" target="_Blank">SWS Portal</a></li>
+			<li><a href="/usermanuals/akvnwater.pdf" target="_Blank">AKVN Water</a></li>
+			<li><a href="/usermanual/boilerregistration.pdf" target="_Blank">Boiler Registration</a></li>
+			<li><a href="/usermanual/boilerinspection.pdf" target="_Blank">Boiler Inspection</a></li> 
+          </ul>
+        </li>
+          
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Advantage MP<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+				<li><a href="/advantage-mp/mp-at-glance">MP at a Glance</a></li>
+				<li><a href="/advantagemp/VISION_2018_ENGLISH.pdf" target="_Blank">MP Vision 2018</a></li>
+				<li><a href="/advantage-mp/industrial-scenario">Industrial Scenario of MP</a></li>
+				<li><a href="/advantage-mp/profiles-of-potential-sector">Profiles of Potential Sector</a></li>
+				<li><a href="/advantage-mp/incentives-and-concessions">Incentives and Concessions</a></li>
+				<li><a href="/advantage-mp/investment-facilitation">Investment Facilitation</a></li>
+				<li><a href="/advantage-mp/investors-information">Investors Information</a></li>
+			</ul>
+        </li>
+          
+        <li class=""><a href="/faq">FAQ</a></li>
+			 
+		
+      </ul>
+	  
+	  <ul class="nav navbar-nav navbar-right">
+       <?php if (Yii::$app->user->isGuest) { ?> 
+			<li><a href="<?= Url::to(['investor/register']) ?>"><i class="fa fa-user"></i> Sign Up</i></a></li> 
+			<li><a href="<?= Url::to(['site/login']) ?>"><i class="fa fa-user"></i> Investor Login</a></li>
+			<li><a href="/backoffice/index.php?r=site/login"><i class="fa fa-user"></i> Department Login</a></li> 
+		<?php }
+		else { ?>   
+			<li><a href="<?= Url::to(['site/logout']) ?>" data-method="post">Logout</a></li> 
+		<?php } ?>    
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav> 						
+
+<?php  //} ?> 
+
+<div class="wrap11"> 
+	
+	<?= $content ?>
+&nbsp;<br>&nbsp;<br>&nbsp;<br>	 
+</div>
+
+
+<footer class="footer-center footer-minimal">
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 footer-left">
+                        <h4>ABOUT US</h4>
+                        <div class="h-devider"></div>
+                        <hr class="space s"> 
+						<img src="minimal/images/logos/newlogo.png" class="logo">
+                        <hr class="space s">
+                        <p>
+                            Framework Y SRL works as international Framework Y services company and is a leading builder in diverse and numerous market segments.
+                        </p>
+                    </div>
+                    <div class="col-md-4 footer-left">
+                        <h4>CONTACTS</h4>
+                        <div class="h-devider"></div>
+                        <hr class="space s">
+                        <ul class="fa-ul">
+                            <li><i class="fa-li im-map-marker2"></i>CEDMAP BHAWAN, 16-A, Arera Hills Bhopal - 462001, M.P(India)</li>
+                            <li><i class="fa-li im-speach-bubble12"></i> facilitation@mptrifac.org </li>
+                            <li><i class="fa-li im-cloud-smartphone"></i> +91-755-2575618, 2571830</li> 
+
+
+
+                        </ul>
+                        <div class="btn-group navbar-social">
+                            <div class="btn-group social-group">
+                                <a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
+                                <a target="_blank" href="#"><i class="fa fa-twitter"></i></a>
+                                <a target="_blank" href="#"><i class="fa fa-instagram"></i></a>
+                                <a target="_blank" href="#"><i class="fa fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>INFOMATIONS</h4>
+                        <div class="h-devider"></div>
+                        <hr class="space s">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="fa-ul">
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Home</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">About Us</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Services</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Investor Guide</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Useful Links</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="fa-ul">
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Manuals</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">FAQ</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Contact Us</a></li>
+                                    <li><i class="fa-li im-right-3"></i> <a href="#">Privacy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="copyright">
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+          <p class="white">&copy; 2017 M.P. Trade and Investment Facilitation Corporation Limited. | ALL RIGHT RESERVED | Designed by <a href="#">E&Y</a> </p>
+        </div>
+    </div>      
+  </div>
+</div>
+
+       
+<?php $this->endBody() ?>
+	 <link rel="stylesheet" href="minimal/plugins/iconsmind/line-icons.min.css">
+        <script async src="minimal/plugins/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="minimal/plugins/imagesloaded.min.js"></script>
+        <script type="text/javascript" src="minimal/plugins/parallax.min.js"></script>
+        <script type="text/javascript" src='minimal/plugins/flexslider/jquery.flexslider-min.js'></script>
+        <script type="text/javascript" async src='minimal/plugins/isotope.min.js'></script>
+        <script type="text/javascript" async src='minimal/plugins/php/contact-form.js'></script>
+        <script type="text/javascript" async src='minimal/plugins/jquery.progress-counter.js'></script>
+        <script type="text/javascript" async src='minimal/plugins/jquery.tab-accordion.js'></script>
+        <script type="text/javascript" async src="minimal/plugins/bootstrap/js/bootstrap.popover.min.js"></script>
+        <script type="text/javascript" async src="minimal/plugins/jquery.magnific-popup.min.js"></script>
+        <script src='minimal/plugins/social.stream.min.js'></script>
+        <script src='minimal/plugins/jquery.slimscroll.min.js'></script>
+
+</footer>
+         
+</body>
+</html>
+<?php $this->endPage() ?>

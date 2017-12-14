@@ -1,0 +1,161 @@
+<?php
+namespace app\controllers;
+
+use Yii;
+use yii\filters\AccessControl;
+use app\models\InvestorProject;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+use app\models\User;
+use app\models\UserProfile;
+use app\models\Roles; 
+use app\models\InvestorProjectDetail;
+use app\models\InvestorProjects;
+use app\models\Services;
+
+use app\models\Caf;
+
+class TrifacController extends \yii\web\Controller {
+	 
+	public $layout = 'investorLayoutIspiniaTrifac'; 
+
+
+	public function behaviors() {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => [ 'index', 'profile', 'service'],
+                'rules' => [
+                    [ 
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ], 
+                ],
+            ], 
+        ];
+    }
+
+
+    public function actions() {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                //'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+        ];
+    }
+
+	 
+	 
+    public function actionIndex() { 
+
+        return $this->render('dashboard');
+
+    } 
+    public function actionMap() { 
+
+        return $this->render('map');
+
+    } 
+
+		
+	public function actionDeptdash() {
+	
+	return $this->render('deptdashnew');
+
+	}
+	
+	public function actionDeptpro() {
+
+    
+            //$this->layout = 'investorLayoutIspiniaDashboard';
+
+
+	   //////////////////////////////start preveous//////////////////////////////////////////////////	       
+                 
+
+		$this->layout = 'investorLayoutIspiniaDashboard';
+ 
+              //  $user_id = Yii::$app->user->identity->id;
+		
+		$user_id = Yii::$app->user->identity->id; 
+		$project_id = Yii::$app->getRequest()->getQueryParam('projectId');
+		
+        $query = InvestorProjects::find();  
+        $investor_project = $query->where(['investor_id' => $user_id, 'id' => $project_id])->all(); 
+
+		$investorproject_detail = array();
+		foreach($investor_project as $investorProject) {
+			$query = investorProjectDetail::find();
+			$investorproject_detail = $query->where(['project_id' => $project_id])->all(); 
+		} 
+		
+		$services = '';
+		$services_map = array();
+
+		foreach($investorproject_detail as $investorprojectdetail) { 
+			$query = Services::find();  
+			$services = $query->where(['id' => $investorprojectdetail->service_id, 'status' => 'A'])->all(); 
+			
+			if(isset($services[0])) {
+				$id = $services[0]->id;
+				$services_map[$id]['name'] = $services[0]->services;
+				$services_map[$id]['department'] = $services[0]->department;
+			}
+		}
+		
+        $request = Yii::$app->request;
+		$post = $request->post();
+		if (count($post)) {
+			if(isset($post['services'])) {
+				$services = $post['services']; 				
+				foreach($services as $service) {
+					$model = InvestorProjectDetail::findOne(['project_id' => $project_id, 'service_id' => $service]);
+					$model->status = '2'; 
+					$model->updated_by = $user_id;
+					$model->save();
+				}
+				//return $this->redirect(['caf/services', 'project_id' => $project_id]);
+				return $this->redirect(['investor/service', 'project_id' => $project_id]);
+			}
+			else {
+				//return $this->redirect(['caf/services', 'project_id' => $project_id]);
+				return $this->redirect(['investor/service', 'project_id' => $project_id]);
+			}
+		}
+        return $this->render('deptpronew', [
+            'investor_project' => $investor_project,
+            'investorproject_detail' => $investorproject_detail,
+            'services' => $services_map,
+        ]);
+
+	///////////////////////////////preveveous////////////////////////////////////////
+
+
+	    //$user_id = Yii::$app->user->identity->id;
+		//return $this->render('projectnew');
+	
+		}
+	
+	public function actionGoldstand() {
+
+             return $this->render('goldstand');
+        }
+
+	public function actionMonthstar() {
+
+             return $this->render('monthstar');
+        }
+	
+	public function actionInvestfeedbk() {
+
+             return $this->render('investfeedback');
+        }
+
+
+
+}

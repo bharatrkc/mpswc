@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <service_1>
+  <navbar>  
+    <tab Label="Water Connection by AKVN" id="tab1"/> 
+  </navbar>
+  <tab id="tab1">
+	 <fields> 
+		<fieldsgroup label="Proposed Location" group_id="tab1-fieldsgroup-1"> 
+			<row>
+			 <column>
+					<field
+					name="akvn"
+					type="select"
+					description=""
+					class="inputbox"
+					filter=""
+					label="AKVN"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="2"
+				   > 
+					<option value="">Select</option>
+					<option value="HT">HT</option>
+					<option value="LT">LT</option>
+				   </field>
+			   </column>
+				<column>
+					<field
+					name="industrial_area"
+					type="select"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Industrial Area"
+					maxlength="25"
+					required="false"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="2"
+				   > 
+					<option value="">Select</option>
+					<option value="NSC">NSC</option>
+					<option value="LR">LR</option>
+					<option value="LE">LE</option>
+				   </field>
+			   </column> 
+			</row>
+		</fieldsgroup>
+
+		<fieldsgroup label="Connection Details" group_id="tab1-fieldsgroup-2"> 
+			<row>
+			<column>
+				<field
+				name="address"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Type of NOC"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[a-zA-Z0-9_]+$"
+					title="Invalid value"
+				   /> 
+			</column>
+			<column>
+				<field
+				name="plot_number"
+				type="select"
+				label="Plot Number"
+				required="true"
+				description=""
+				row="2" 
+				col="1" 
+				parent=""
+				placeholder="">			
+					<option value="">Select</option>
+					<option value="Permanent">Permanent</option>
+					<option value="Temporary">Temporary</option>
+				</field> 
+			</column>
+		  </row> 
+			<row>
+				<column>
+				<field
+				name="pincode"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Pincode"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="2"
+				pattern="^[a-zA-Z0-9_]+$"
+				title="Invalid value"
+			   /> 
+			   </column>
+				<column>
+				<field
+				name="size_of_water_connection_applied"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Size of water connection applied"
+				maxlength="25"
+				required="false"
+				validate=""
+				autofocus="true" 
+				row="4" 
+				col="1" 
+				placeholder=""
+				pattern="*"
+			   /> 
+			   </column>
+			</row>
+			<row>
+			   <column>
+				<field
+				name="water_requirement"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Water Requirement (per day) minimum"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="2"
+				placeholder=""
+				pattern="^[+-]?([0-9]*[.])?[0-9]+$" 
+				title="Numeric only"
+			   /> 
+			   </column>  
+			</row> 
+		</fieldsgroup>
+	 </fields> 
+</tab>
+
+</service_1>

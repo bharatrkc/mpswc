@@ -1,0 +1,225 @@
+<?php
+use yii\web\View;
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\widgets\Breadcrumbs;
+use app\assets\AppAsset; 
+use yii\widgets\ActiveForm;
+use yii\helpers\Url;
+ 
+$this->title = 'Services'; 
+$this->params['breadcrumbs'][] = $this->title; 
+?>
+<style>
+.container-fluid{margin:0px;border:0px;}
+.row-bordered{border-bottom:1px solid #ccc;}
+.col{border-bottom:1px solid #ccc;padding:8px 10px;min-height: 60px;}
+.fa-list{font-size:20px;}
+</style>
+<style>
+.table-fixed thead {
+  width: 97%;
+}
+.table-fixed tbody {
+  height: auto;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+      overflow: auto;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+</style>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2><?php echo $this->title; ?></h2>		
+		<?= Breadcrumbs::widget([
+			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+		]) ?> 
+	</div> 
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight"> 
+	<div class="form-investor white-bg" style="background-color:#fff;"> 
+		<div style="width:740px;margin:0px auto;">
+			<?php  $form = ActiveForm::begin([ 'options' => ['class' => 'form-horizontal'],]); ?> 
+		</div>
+
+
+		<div class="container-fluid">
+		  <div class="row">
+			  <div class="panel panel-default" style="margin-bottom:0px;">
+					<div class="panel-heading"><h4>List of Pre-Establishment Services to apply:</h4></div>
+				   <table class="table table-fixed">
+					  <thead>
+						<tr>
+						  <th class="col-xs-1">#</th><th class="col-xs-9">Service Name</th><th class="col-xs-2" style="text-align:center;"><a href="javascript:void();" id="select-all-prestab">Select</a></th>
+						</tr>
+					  </thead>
+					  <tbody class="prestab">
+					<?php
+					if(isset($investorproject_detail)) {
+						if(count($investorproject_detail)) {
+							$i = 1;
+							foreach ($investorproject_detail as $service): 
+								
+							if($service->type == 'pre-establishment') { 
+								$service_id = $service->service_id;	
+
+								$disabled = '';
+								$checked = '';
+								$img = '';
+								if($service->status) {
+									$disabled = 'disabled';
+									$checked = 'checked'; 
+								}
+
+								if($service->completed) { 
+									$img = '<img src="images/apply.png" style="width:20px;position: absolute;"/>';
+								}
+								?>
+							   <tr>
+								  <td class="col-xs-1"><?php print $i; ?></td>
+								  <td class="col-xs-9"><?php if(isset($services[$service_id]['name'])) { print $services[$service_id]['name']; } ?></td>
+								  <td class="col-xs-2" style="text-align:center;">
+									<input type="checkbox" name="services[]" value="<?= $service_id; ?>" <?= $disabled ?> <?= $checked ?>/>&nbsp;&nbsp;<?= $img?></td>
+								</tr>
+				
+								<?php
+								$i++;
+					}
+			endforeach; 
+		}
+	} 
+	?>
+					</tbody>
+			</table>
+		</div>
+	</div>
+	</div> 
+	 
+<?php
+	if(isset($investorproject_detail)) {
+		if(count($investorproject_detail)) { 
+			
+			$header = '<div class="container-fluid">
+	  <div class="row">
+		  <div class="panel panel-default">
+			<div class="panel-heading"><h4>List of Pre-Operational Services to apply:</h4></div>	
+			<table class="table table-fixed">
+				  <thead>
+					<tr>
+					  <th class="col-xs-1">#</th><th class="col-xs-9">Service Name</th><th class="col-xs-2" style="text-align:center;"><a href="javascript:void();" id="select-all-preoper">Select</a></th>
+					</tr>
+				  </thead>
+				  <tbody  class="preoper">';
+			?>
+	
+	<?php 
+		$i = 1;
+		$flag = 0;
+
+		foreach ($investorproject_detail as $service): 
+				
+			if($service->type == 'pre-operational') {
+				
+				$flag = 1;
+				if($flag == 1 && $i ==1) { echo $header; }
+				
+						//echo '<pre>'; print_r($service); exit;
+							$service_id = $service->service_id;	
+
+				$disabled = '';
+				$checked = '';
+				$img = '';
+				if($service->status) {
+					$disabled = 'disabled';
+					$checked = 'checked'; 
+				}
+				if($service->completed) { 
+					$img = '<img src="images/apply.png" style="width:20px;"/>';
+				}
+				?>
+			     <tr>
+				  <td class="col-xs-1"><?php print $i; ?></td>
+				  <td class="col-xs-9"><?php if(isset($services[$service_id]['name'])) { print  wordwrap($services[$service_id]['name'],100," \n"); } ?></td>
+				  <td class="col-xs-2" style="text-align:center;">
+					<input type="checkbox" name="services[]" value="<?= $service_id; ?>" <?= $disabled ?> <?= $checked ?>/>&nbsp;&nbsp;<?= $img?></td>
+				</tr>
+				<?php
+				$i++;
+			}
+			$flag = 0;
+			endforeach; 
+
+			//if($flag == 1) {
+	?>
+
+	</tbody>
+        </table>
+  </div>
+</div>
+</div>
+ <?php 
+			//}
+		}
+	} 
+	?>
+
+	<div class="row">
+		<div class=" col-md-2 col-md-offset-10">
+		   <?= Html::submitButton('Apply', ['class' => 'btn btn-primary']) ?>
+		</div>
+	</div>
+	<br>&nbsp;<br>
+	<?php ActiveForm::end(); ?>
+ 
+ 
+</div>
+</div>
+
+
+<?php
+$this->registerJs(
+'
+$(document).ready(function(){
+
+	$("#select-all-prestab").click(function() {
+
+		if($(this).text() == "Select All") {
+			$(this).find(".prestab > .service").prop("checked", true);
+			$(this).text("Reset");
+		} else {
+			$(this).find(".prestab > .service").prop("checked", false);
+			$(this).text("Select");
+		}
+	}); 
+
+	$("#select-all-preoper").click(function() {
+
+		if($(this).text() == "Select All") {
+			$(this).find(".preoper > .service").prop("checked", true);
+			$(this).text("Reset");
+		} else {
+			$(this).find(".preoper > .service").prop("checked", false);
+			$(this).text("Select");
+		}
+	}); 
+});
+
+$(".select-all-prestab").click(function() {
+	 $("#select-all").prop("checked", false);
+});
+
+
+
+', View::POS_READY, 'my-button-handler');
+
+?>

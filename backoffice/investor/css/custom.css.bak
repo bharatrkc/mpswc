@@ -1,0 +1,36 @@
+/* Add here all your CSS customizations */
+
+.group-label{padding: 5px 8px;background: #364150;color:#fff;}
+.container-fluid{border:1px solid #364150;padding:0px; }
+.nav-tabs > li {margin-bottom: -2px;}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {border-top: 0px;}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{font-weight:bold;text-transform:uppercase;}
+.element-label{min-width:100px; text-align: right;}
+input[type=text]{min-width:200px;}
+select{height:25px; min-width:70px;}
+a {
+    text-shadow: none;
+    color: #364150;
+}
+label.error {
+    background: url('../../images/unchecked.gif') no-repeat; 
+    margin-left: .3em;
+	color:red;
+    display: block;
+    padding-left: 17px;
+}
+input.error {
+    border: 1px solid red;
+}
+label.valid {background: url('../../images/checked.gif') no-repeat left;display: block;width: 16px;height: 16px;float: right; margin: 5px;}
+.element{padding:0px 2px;}
+.element-label{padding-right:10px;}
+.clear-fix{clear:both;}
+table{padding:10px;}
+td{padding:15px 5px;}
+.newline{clear:both;padding:15px 5px;}
+input:invalid {color: red;}
+
+.disabled{pointer-events: none;}
+
+#content a:hover {color: #000;text-decoration:underline;}

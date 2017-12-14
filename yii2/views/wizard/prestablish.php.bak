@@ -1,0 +1,382 @@
+<?php
+use yii\web\View;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use yii\helpers\Url;
+use yii\widgets\Breadcrumbs;
+
+use dosamigos\ckeditor\CKEditor;
+
+$project_name = '';
+$this->title = 'Pre Establishment Service Wizard';
+
+if(isset($investor_project[0]->project)) {
+	$project_name = $investor_project[0]->project;
+	$this->title = 'Pre Establishment Service Wizard for : ' . $project_name;
+}
+ 
+$this->params['breadcrumbs'][] = $this->title;
+
+$form = ActiveForm::begin([
+    'id' => 'wizardForm',
+    'options' => ['class' => 'form-horizontal'],
+]);
+
+?>
+<style>
+.form-horizontal .control-label { 
+    text-align: left;
+}
+div.required label.control-label:after {
+    content: " *";
+    color: red;
+}
+.form-horizontal .form-group.radio-grp{
+    padding-right: 15px;
+    float: left;
+    margin: 0px;
+} 
+.radio-grp label{
+ margin:0px;padding:0px;
+
+ padding: 0px 10px;margin:0px;float: left;width: 100%;display: block;
+}
+.form-horizontal .form-group.radio-grp:last-child{margin-bottom: 20px;}
+.form-horizontal .form-group.radio-grp:first-child{margin-left: -15px;}
+
+/*---radio style--*/
+
+label.btn span {
+  font-size: 1.5em ;
+}
+
+label input[type="radio"] ~ i.fa.fa-circle-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="radio"] ~ i.fa.fa-dot-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o{
+    color: #7AA3CC;    display: inline;
+}
+label:hover input[type="radio"] ~ i.fa {
+color: #7AA3CC;
+}
+
+label input[type="checkbox"] ~ i.fa.fa-square-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="checkbox"] ~ i.fa.fa-check-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
+    color: #7AA3CC;    display: inline;
+}
+label:hover input[type="checkbox"] ~ i.fa {
+color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label.active{
+    color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label {
+display: inline-block;
+padding: 6px 12px;
+margin-bottom: 0;
+font-size: 14px;
+font-weight: normal;
+line-height: 2em;
+text-align: left;
+white-space: nowrap;
+vertical-align: top;
+cursor: pointer;
+background-color: none;
+border: 0px solid 
+#c8c8c8;
+border-radius: 3px;
+color: #c8c8c8;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+div[data-toggle="buttons"] label:hover {
+color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+</style> 
+
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2><?php echo $this->title; ?></h2>		
+		<?= Breadcrumbs::widget([
+			'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+		]) ?> 
+	</div>
+	<div class="col-lg-2"></div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight"> 
+
+<div class="form-investor">
+
+
+
+	<div class="portlet-body"> 
+<div class="container-fluid" style="margin:0px;border:0px;">
+
+
+<?php
+ 
+$post_names = array();
+//itrate question groups
+foreach ($questiongroups as $questiongroup): ?>
+		<?php 
+		$i=0;
+		//itrate questions
+		foreach ($questions as $question): 
+
+			if($question->grp_id == $questiongroup->id): 
+				$i++; 
+		?>
+		<div class="row hideshow required"> 
+			<div class="col-lg-6">
+				<?php //echo $i; ?>
+				<label class="control-label" for="<?= $question->id ?>"><?= $question->text ?></label> 
+			</div>
+			<div class="col-lg-3"> 
+			<?php 
+				if(trim($question->render_type) == 'Drop Down'):
+
+					$post_names[$question->id] = $question->text;
+
+					$parent_id = '';
+					if($question->parent_id):  
+						$parent_id = 'data-parentId="'.$question->parent_id.'"';
+					endif; 
+				?>	
+					<div class="form-group">
+					<select id="<?= $question->id ?>" name="PreEstablish[<?= $question->id ?>]" <?= $parent_id ?> class="form-control"  data-validation="required" >
+						<option value="">Select</option>
+						<?php
+							foreach ($answers as $answer):		
+								if($answer->question_id == $question->id):
+
+									$parentansid = '';
+									if($answer->parent_ans_id):  
+										$parentansid = 'data-parentansid="'.$answer->parent_ans_id.'"';
+									endif; 
+
+									$dependentquestions = '';
+									if($answer->dependent_questions):  
+										$dependentquestions = 'data-dependentquestions="'.$answer->dependent_questions.'"';
+									endif;   
+							?> 
+							<?php
+							if($question->id == 1) {
+								if($investor_project[0]['sector'] == $answer->text) {  
+									 echo '<option selected value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+
+							  }
+							  else { 
+									 echo '<option value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+							  }
+							} 
+							elseif($question->id == 9) {
+								  if($investor_project[0]['investment_limit'] >= 4 && $answer->id==76) {  
+										 echo '<option selected value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+
+								  }
+								 elseif($investor_project[0]['investment_limit'] == 3 && $answer->id==75) {  
+										 echo '<option selected value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+
+								  }
+								 elseif($investor_project[0]['investment_limit'] == 2 && $answer->id==74) {  
+										 echo '<option selected value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+
+								  }
+								 elseif($investor_project[0]['investment_limit'] == 1 && $answer->id==73) {  
+										 echo '<option selected value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+
+								  }
+								  else { 
+										 echo '<option value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+								  }
+							}							
+							elseif($question->id == 10) {
+								  if($investor_project[0]['power_load'] < 11 && $answer->id==77) {  
+										 echo '<option selected value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+
+								  }
+								 elseif($investor_project[0]['power_load'] > 11 && $answer->id == 78) {  
+										 echo '<option selected value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+
+								  }
+								  else { 
+										 echo '<option value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+								  }
+							}							
+							elseif($question->id == 11) {
+								  if($investor_project[0]['employment'] < 10 && $answer->id==79) {  
+										 echo '<option selected value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+
+								  }
+								 elseif($investor_project[0]['employment'] > 10 && $answer->id == 80) {  
+										 echo '<option selected value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+
+								  }
+								 elseif($investor_project[0]['employment'] < 20 && $answer->id == 81) {  
+										 echo '<option selected value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+
+								  }
+								 elseif($investor_project[0]['employment'] > 20 && $answer->id == 82) {  
+										 echo '<option selected value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+
+								  }
+								  else { 
+										 echo '<option value="'.$answer->id.'" '.$parentansid.' '.$dependentquestions.'>'.$answer->text.'</option>';
+								  }
+							}
+							else { ?>
+							
+								 <option value="<?= $answer->id ?>" <?= $parentansid ?> <?= $dependentquestions ?>><?= $answer->text ?></option> 
+
+						   <?php	} ?>
+
+							<?php
+								endif;   
+							endforeach; 
+						?>
+					</select>
+					</div>
+				<?php 					 
+			    endif; 
+				//---all radio fields
+				if($question->render_type == 'Radio Button'):
+
+					$post_names[$question->id] = $question->text;  
+					 
+					$parent_id = '';
+					if($question->parent_id):  
+						$parent_id = 'data-parentId="'.$question->parent_id.'"';
+					endif; 
+					?>
+					<div class="form-group required checkbox i-checks">
+					<?php
+					foreach ($answers as $answer): 
+						if($answer->question_id == $question->id):
+
+							$parentansid = '';
+							if($answer->parent_ans_id):  
+								$parentansid = 'data-parentansid="'.$answer->parent_ans_id.'"';
+							endif; 
+
+							$dependentquestions = '';
+							if($answer->dependent_questions):  
+								$dependentquestions = 'data-dependentquestions="'.$answer->dependent_questions.'"';
+							endif;   
+
+					?>
+						<input type="radio"  data-validation="required" id="<?= $question->id.'_'.$answer->id ?>" name="PreEstablish[<?= $question->id ?>]" value="<?= $answer->id ?>" <?= $dependentquestions ?>  ng-model="radio_<?= $question->id ?>"  /><label for="<?= $question->id.'_'.$answer->id ?>"> <?= $answer->text ?></label>&nbsp;&nbsp;
+
+					<?php 
+						endif;
+					endforeach; 
+					?>
+					
+					</div>
+
+					<?php
+			    endif; 
+
+				//---all multiselect
+				if($question->render_type == 'Multiple Choice'):  
+					$post_names[$question->id] = $question->text;
+					 
+					$parent_id = '';
+					if($question->parent_id):  
+						$parent_id = 'data-parentId="'.$question->parent_id.'"';
+					endif; 
+					?>
+					<div class="form-group">
+					<select id="<?= $question->id ?>" name="PreEstablish[<?= $question->id ?>][]" <?= $parent_id ?>  multiple="multiple" class="form-control"  data-validation="required" >
+						<?php
+						foreach ($answers as $answer):		
+							if($answer->question_id == $question->id): 
+
+								$parentansid = '';
+								if($answer->parent_ans_id):  
+									$parentansid = 'data-parentansid="'.$answer->parent_ans_id.'"';
+								endif; 
+
+								$dependentquestions = '';
+								if($answer->dependent_questions):  
+									$dependentquestions = 'data-dependentquestions="'.$answer->dependent_questions.'"';
+								endif;   
+						?> 
+							<option value="<?= $answer->id ?>" <?= $dependentquestions ?> <?= $parentansid ?>><?= $answer->text ?></option> 
+						<?php
+							endif;   
+						endforeach; 
+						 ?>
+					</select>
+					</div>
+					<?php 
+				endif; 
+			?> 
+		</div>
+		<div class="col-lg-1"></div>
+		</div>
+		<?php endif; ?>
+	<?php endforeach; ?>
+	</div>
+<?php endforeach; ?>
+ 
+<!-- <input type="hidden" name="servicew" value='<?php // echo serialize($post_names); ?>'/> 
+ -->
+
+  <div class="row">
+    <div class="form-group text-center">
+        <div class="col-lg-offset-1 col-lg-11">
+			<p>&nbsp;</p> 
+            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+        </div>
+    </div>
+ </div>
+<?php ActiveForm::end() ?> 
+<div id="cascadingCombos" style="display:none"></div>
+ 
+</div> 
+
+<?php 
+
+$this->registerJsFile(Yii::$app->request->baseUrl.'/js/wizard.js',['depends' => [\yii\web\JqueryAsset::className()]]); 
+
+
+$this->registerJsFile(
+    Yii::$app->request->baseUrl.'/js/jquery.form-validator.min.js',
+    ['depends' => [\yii\web\JqueryAsset::className()]]
+);
+
+$this->registerJs(
+"$.validate({
+  borderColorOnError : '#ff0000',
+  addValidClassOnAll : true
+});
+", View::POS_READY, 'my-button-handler');
+
+?> 

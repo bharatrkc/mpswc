@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <service_1>
+  <navbar>  
+    <tab Label="ELECTRICITY CONNECTION (HT)" id="tab1"/> 
+  </navbar>
+  <tab id="tab1">
+	 <fields> 
+		<fieldsgroup label="" group_id="tab1-fieldsgroup-1"> 
+			<row>
+			 <column>
+					<field
+					name="type_of_connection_ht_lt"
+					type="select"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Type of connection"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="2"
+				   >
+					<option value="">Select</option>
+					<option value="HT">HT</option>
+					<option value="LT">LT</option>
+				   </field>
+			   </column>
+				<column>
+					<field
+					name="application_type"
+					type="select"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Application Type"
+					maxlength="25"
+					required="false"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="2"
+				   > 
+					<option value="">Select</option>
+					<option value="NSC">NSC</option>
+					<option value="LR">LR</option>
+					<option value="LE">LE</option>
+				   </field>
+			   </column> 
+			</row>
+		</fieldsgroup>
+
+		<fieldsgroup label="Connection Details" group_id="tab1-fieldsgroup-2"> 
+			<row>
+			<column>
+				<field
+				name="type_of_electric_connection"
+				type="select"
+				label="Type of Electric Connection"
+				required="true"
+				description=""
+				row="2" 
+				col="1" 
+				parent=""
+				placeholder="">			
+					<option value="">Select</option>
+					<option value="Permanent">Permanent</option>
+					<option value="Temporary">Temporary</option>
+				</field> 
+			</column>
+			<column>
+				<field
+				name="category_of_electric_connection"
+				type="select"
+				label="Category of Electric Connection"
+				required="true"
+				description=""
+				row="2" 
+				col="1" 
+				parent=""
+				placeholder="">			
+					<option value="">Select</option>
+					<option value="Permanent">Permanent</option>
+					<option value="Temporary">Temporary</option>
+				</field> 
+			</column>
+		  </row> 
+		  
+		</fieldsgroup>
+
+		<fieldsgroup label="Connection Address" group_id="tab1-fieldsgroup-3"> 
+			<row>
+				<column>
+				<field
+				name="khasra_no"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Khasra / Plot No"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="4" 
+				col="1" 
+				placeholder=""
+				pattern="^[a-zA-Z0-9_]+$"
+				title="Invalid value"
+			   /> 
+			   </column>
+				<column>
+				<field
+				name="area"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Area (Sq Feet)"
+				maxlength="25"
+				required="false"
+				validate=""
+				autofocus="true" 
+				row="4" 
+				col="1" 
+                pattern="^[+-]?([0-9]*[.])?[0-9]+$" 
+				title="Numeric only"
+			   /> 
+			   </column>
+			</row>
+			<row>
+			   <column>
+				<field
+				name="colony"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Colony / Area Name"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="2"
+				pattern="^[a-zA-Z0-9_]+$"
+				title="Invalid value"
+			   /> 
+			   </column>
+			   <column>
+				<field
+				name="pincode"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Pincode"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="2"
+				placeholder=""
+				pattern="^[1-9][0-9]{5}$"
+				title="Invalid Pincode"
+			   />  
+			   </column>
+			</row>  
+			<row>
+				<column>
+				<field
+				name="district"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="District"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="2"
+				placeholder=""
+				pattern="*"
+				title=""
+			   />  
+			   </column>
+			<column> 
+				  <field
+					name="block"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Block"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="7" 
+					col="2"
+					placeholder="" 
+					
+				/>
+			</column>
+		  </row>
+		  <row> 
+			<column> 
+				  <field
+					name="panchayat"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Panchayat / Zone"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="7" 
+					col="2"
+					placeholder="" 
+					
+				/>
+			</column>
+			<column> 
+				  <field
+					name="ward"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Ward / Village"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="7" 
+					col="2"
+					placeholder="" 
+					
+				/>
+			</column>
+		 </row>
+		  <row>
+		  <column> 
+				<field
+				name="type_of_connection_govt_private"
+				type="select"
+				label="Type of Connection"
+				required="true"
+				description=""
+				row="2" 
+				col="1" 
+				parent=""
+				placeholder="">			
+					<option value="">Select</option>
+					<option value="Government">Government</option>
+					<option value="Private">Private</option>
+				</field> 
+		</column>
+		<column>
+		  <field
+				name="end_date_of_registration"
+				type="date" 
+				label="End date of registration (Validity)" 
+				required="true"
+				validate=""
+				autofocus="true"
+				format="%d-%m-%Y"
+				filter=""
+				class="readonly validate-date"
+				maxlength="25" 
+				row="3" 
+				col="1" 
+				placeholder=""
+				 
+				max="2077-01-01"
+				min="1960-01-02"
+			   />  
+		</column> 
+		</row>
+		<row>
+		<column>
+		  <field
+			name="bank_name"
+			type="text"
+			description=""
+			class="inputbox"
+			filter=""
+			label="Bank Name"
+			maxlength="25"
+			required="true"
+			validate=""
+			autofocus="true"
+			row="8" 
+			col="1"
+			pattern="^[A-Za-z -]+$" 
+			title="Text only"
+		/>
+		</column>
+		<column>
+		  <field
+			name="ifsc_code"
+			type="text"
+			description=""
+			class="inputbox"
+			filter=""
+			label="IFSC Code"
+			maxlength="25"
+			required="true"
+			validate=""
+			autofocus="true"
+			row="8" 
+			col="2"
+			pattern="^[a-zA-Z0-9_]+$"
+			title="Invalid value"
+		/> 
+		</column>
+		</row>
+		<row>
+		<column>
+			<field
+				name="account_no"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Account No"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="1" 
+				col="1"
+				placeholder=""
+				pattern="^[+-]?([0-9]*[.])?[0-9]+$" 
+				title="Numeric only"
+			/>  
+		</column>
+		  <column>
+			<field
+				name="re_account_no"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Re-enter Account No"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="1" 
+				col="1"
+				placeholder=""
+				pattern="^[+-]?([0-9]*[.])?[0-9]+$" 
+				title="Numeric only"
+			/>  
+		</column>
+		</row> 
+		<row> 
+			<column>
+				  <field
+					name="required_load"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Required Load (Kva)"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true" 
+					row="1" 
+					col="1"
+					placeholder=""
+					pattern="^[+-]?([0-9]*[.])?[0-9]+$" 
+					title="Numeric only"
+
+				/> 
+			</column>
+			<column>
+			  <field
+				name="required_voltage"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Required Voltage"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="1" 
+				col="1"
+				placeholder=""
+			
+			/>
+			</column> 
+			</row> 
+		</fieldsgroup>
+	 </fields> 
+</tab>
+
+</service_1>

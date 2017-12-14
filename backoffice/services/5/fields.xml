@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <service_1>
+
+  <navbar>  
+    <tab Label="NOC FROM FIRE DEPARTMENT" id="tab1"/> 
+  </navbar>
+	
+  <tab id="tab1">
+	 <fields> 
+		<fieldsgroup label="Applicant Details" group_id="tab1-fieldsgroup-1"> 
+			<row>
+				<column>
+					<field
+					name="type_of_noc"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Type of NOC"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[A-Za-z -]+$" 
+					title="Text only"
+				   /> 
+			   </column> 
+			</row>
+		</fieldsgroup>
+		   
+		<fieldsgroup label="Type of Occupancy" group_id="tab1-fieldsgroup-2"> 
+			<row>
+			<column>
+				<field
+				name="occupancy_type"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Select Your Occupancy"
+					maxlength="255"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[A-Za-z -]+$" 
+					title="Text only"
+				   /> 
+			   </column> 
+			</row> 
+		</fieldsgroup>
+	 </fields> 
+</tab>
+
+</service_1>

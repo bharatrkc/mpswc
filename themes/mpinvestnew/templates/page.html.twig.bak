@@ -1,0 +1,76 @@
+ <div role="main" class="main">
+
+				<section class="page-header">
+					<div class="container">
+						 
+						<div class="row">
+							<div class="col-md-12">
+								<!-- <h1>Left Sidebar</h1> -->
+								{{ page.content_title }} 
+							</div>
+						</div>
+					</div>
+				</section>
+
+				
+
+				  {% if page.highlighted %}
+					<div id="highlighted-block">
+					  <div class="container">
+						<div class="row">
+						  <div class="col-sm-12">
+							{{ page.highlighted }}
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  {% endif %}
+
+				<div class="container">
+
+					<div class="row">
+						
+						{% if page.sidebar_first %}
+							<div class="col-md-3">
+								<aside class="sidebar">
+										{{ page.sidebar_first }} 
+
+																		
+										{{ page.secondary_menu }}
+										{{ page.header }}
+										{{ page.primary_menu }}
+								</aside>
+							</div>
+					   {% endif %} 
+
+
+						 
+						{% if page.sidebar_first %}
+						  {% set primary_col = 9 %}
+						{% else %}
+						  {% set primary_col = 12 %}
+						{% endif %}
+						<div class="{{ 'content-area col-sm-' ~ primary_col }}"> 
+
+							<div class="row">
+									{% if page.content_top %}
+									  <div id="content_top">
+										{{ page.content_top }}
+										{{ messages }}
+									  </div>
+									{% endif %}
+									<div id="content-wrap">
+									  {{ page.help }}
+									  {{ page.content }}
+									</div>
+							</div> 
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+ 

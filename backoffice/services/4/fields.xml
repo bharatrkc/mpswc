@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <service_1>
+  <navbar>  
+    <tab Label="Building Plan Approval by AKVN" id="tab1"/> 
+  </navbar>
+  <tab id="tab1">
+	 <fields> 
+		<fieldsgroup label="Engineer Details" group_id="tab1-fieldsgroup-1"> 
+			<row>
+				<column>
+					<field
+					name="engineer"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Engineer / architect"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[A-Za-z -]+$" 
+					title="Text only"
+				   /> 
+			   </column>
+				<column>
+					<field
+					name="engineer_license_no"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Engineer / architect's license no"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[a-zA-Z0-9_]+$"
+					title="Invalid value"
+				   /> 
+			   </column> 
+			</row>
+		</fieldsgroup>
+		   
+		<fieldsgroup label="Land Details" group_id="tab1-fieldsgroup-2"> 
+			<row>
+			<column>
+				<field
+				name="whether_land_is_diverted"
+				type="select"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Whether land is diverted"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="5" 
+				col="1"
+				placeholder="">
+					<option value="">Select</option>
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</field> 
+			</column> 
+				<column>
+					<field
+					name="purpose_of_construction"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Purpose of construction"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[a-zA-Z0-9_]+$"
+					title="Invalid value"
+				   /> 
+			   </column> 
+			</row> 
+			
+			<row>
+			<column>
+				<field
+				name="approval_from_town_and_country_planning_department"
+				type="select"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Approval from Town and Country Planning Department"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="5" 
+				col="1"
+				placeholder="">
+					<option value="">Select</option>
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</field> 
+			</column> 
+			</row>
+		</fieldsgroup>
+	 </fields> 
+</tab>
+
+</service_1>

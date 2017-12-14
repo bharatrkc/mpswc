@@ -1,0 +1,44 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      plugins/bootstrap/css/bootstrap.css: {}
+      plugins/font-awesome/css/font-awesome.css: {}
+      style.css: {}
+      plugins/my-flat-icon/my-icon.css: {}
+      css/content-box.css: {}
+      css/image-box.css: {}
+      css/animations.css: {}
+      css/components.css: {}
+      plugins/flexslider/flexslider.css: {}
+      plugins/magnific-popup.css: {}
+      plugins/php/contact-form.css: {}
+      plugins/social.stream.css: {}
+      skin.css: {}
+      plugins/iconsmind/custom-bs-margin-padding.css: {}
+      mycustom.css: {}
+      mycustom_2.css: {}
+      custom.css: {}
+      responsivecss.css: {}
+      plugins/iconsmind/line-icons.min.css: {}
+  js:
+    plugins/jquery.min.2.1.4.js: {}
+    script.js: {}
+    plugins/bootstrap/js/bootstrap.js: {}
+    plugins/imagesloaded.min.js: {}
+    plugins/parallax.min.js: {}
+    plugins/flexslider/jquery.flexslider-min.js: {}
+    plugins/isotope.min.js: {}
+    plugins/php/contact-form.js: {}
+    plugins/jquery.progress-counter.js: {}
+    plugins/jquery.tab-accordion.js: {}
+    plugins/bootstrap/js/bootstrap.popover.min.js: {}
+    plugins/jquery.magnific-popup.min.js: {}
+    plugins/social.stream.min.js: {}
+    plugins/jquery.slimscroll.min.js: {}
+    mycustom.js: {}
+messages:
+  version: VERSION
+  css:
+    component:
+      css/components/messages.css: { preprocess: false }

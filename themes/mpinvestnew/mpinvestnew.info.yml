@@ -1,0 +1,30 @@
+name: mpinvestnew
+type: theme
+description: 'A flexible, recolorable theme with many regions and a responsive, mobile-first layout.'
+package: Core
+libraries:
+  - mpinvestnew/global-styling
+regions:
+  header: Header
+  primary_menu: 'Primary menu'
+  secondary_menu: 'Secondary menu' 
+  content_title: 'Content Title'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  highlighted: Highlighted
+  featured_top: 'Featured top'
+  breadcrumb: Breadcrumb
+  content_top: Content Top
+  content: Content
+  sidebar_first: 'Sidebar first'
+  footer_first: 'Footer first'
+  footer_second: 'Footer second'
+  footer_third: 'Footer third'
+  footer_fourth: 'Footer fourth'
+  footer_fifth: 'Footer fifth'
+
+# Information added by Drupal.org packaging script on 2017-06-21
+version: '8.3.4'
+core: '8.x'
+project: 'drupal'
+datestamp: 1498069701

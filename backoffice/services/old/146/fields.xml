@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <service_1>
+
+  <navbar>  
+    <tab Label="Unit / Company Details" id="tab1"/>
+    <tab Label="Contact Details" id="tab2"/> 
+    <tab Label="Project Information" id="tab3"/> 
+    <tab Label="Investment Details" id="tab4"/> 
+  </navbar>
+	
+  <tab id="tab1">
+	 <fields> 
+		<fieldsgroup label="General Information" group_id="tab1-fieldsgroup-1"> 
+			<row>
+				<column>
+					<field
+					name="organisation_name"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Unit Name:"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="[A-Za-z]{1,25}"
+					title="Letters only of 25 max length"
+				   /> 
+			   </column>
+			   <column>
+					<field
+					name="constitution"
+					type="select"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Constitution:"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="2"
+				   > 
+					<option value="">Select</option>
+					<option value="1">Proprietary</option>
+					<option value="2">H.U.F</option>
+					<option value="3">Partnership</option>
+					<option value="4">Co-operative</option>
+					<option value="5">Private Limited Company</option>
+					<option value="6">Public Limited Company</option>
+					<option value="7">Self Help Group</option>
+					<option value="8">Others</option>
+					<option value="9">Limited Liability Partnership</option>
+				   </field>
+			   </column>
+			</row>
+
+			<row>
+			<column colspan="2">
+				<field
+				name="salutation"
+				type="select"
+				label="Applicant"
+				required="true"
+				description=""
+				row="2" 
+				col="1" 
+				parent=""
+				placeholder="">			
+					<option value="">Select</option>
+					<option value="Mr">Mr</option>
+					<option value="Mrs">Mrs</option>
+					<option value="Ms">Ms</option>
+				</field>
+				<field
+				name="firstname"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label=""
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="2" 
+				col="1" 
+				placeholder="First Name"
+				pattern="[A-Za-z]{1,25}"
+				title="Letters only of 25 max length"
+			   />
+				<field
+				name="middlename"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label=""
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="2" 
+				col="1" 
+				placeholder="Middle Name"
+				pattern="[A-Za-z]{1,25}"
+				title="Letters only of 25 max length"
+			   />
+				<field
+				name="lastname"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label=""
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="2" 
+				col="1" 
+				placeholder="Last Name"
+				pattern="[A-Za-z]{1,25}"
+				title="Letters only of 25 max length"
+			   />
+			</column>
+		  </row>
+		  <row>
+			<column>
+			  <field
+				name="dob"
+				type="date" 
+				label="DOB" 
+				required="true"
+				validate=""
+				autofocus="true"
+				format="%d-%m-%Y"
+				filter=""
+				class="readonly validate-date"
+				maxlength="25" 
+				row="3" 
+				col="1" 
+				placeholder=""
+				pattern=".*" 
+				max="2017-01-01"
+				min="1960-01-02"
+			   />  
+			</column>
+			<column> 
+				<field
+				name="pan_number"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="PAN No."
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="3" 
+				col="2" 
+				placeholder="" 
+				pattern="[\w]{3}(p|P|c|C|h|H|f|F|a|A|t|T|b|B|l|L|j|J|g|G)[\w][\d]{4}[\w]"
+				title="Invalid Pan Number"
+			   /> 
+			 </column>
+			</row>
+			<row>
+				<column>
+				<field
+				name="district"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Proposed District Location"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="4" 
+				col="1" 
+				placeholder=""
+				pattern=".*" 
+			   /> 
+			   </column>
+			</row>
+		</fieldsgroup>
+		   
+		<fieldsgroup label="Address" group_id="tab1-fieldsgroup-2"> 
+			<row>
+			<column>
+				<field
+				name="address_type"
+				type="select"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Address Type"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="5" 
+				col="1"
+				placeholder="">
+					<option value="">Select</option>
+					<option value="R">Registered</option>
+					<option value="C">Corporate</option>
+					<option value="K">Correspondence</option>
+				</field> 
+			</column>
+			</row>
+
+			<row>
+			<column> 
+				<field
+				name="address"
+				type="textarea"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Address"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="1"
+				placeholder="" 
+			   />  
+			</column>
+
+			<column>
+				<field
+				name="address_country"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Country"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="6" 
+				col="2"
+				placeholder=""
+				newline="true"
+				pattern=".*"
+			   />  
+			 
+				<field
+				name="address_pincode"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Pincode"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="2"
+				placeholder=""
+				pattern="^[1-9][0-9]{5}$"
+				title="Invalid Pincode"
+			   />  
+			</column>
+		  </row>
+
+		  <row>
+		  <column>
+		  <field
+			name="address_email"
+			type="email"
+			description=""
+			field="id"
+			filter=""
+			label="Email"
+			message="The email address you entered is already in use or invalid. Please enter another email address."
+			required="true"
+			maxlength="30"
+			unique="true"
+			validate=""
+			class="inputbox validate-email"
+			row="7" 
+			col="1"
+			placeholder=""
+			pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+		/>  
+		</column>
+		<column>
+		  <field
+			name="address_mobile"
+			type="text"
+			description=""
+			class="inputbox"
+			filter=""
+			label="Mobile number"
+			maxlength="25"
+			required="true"
+			validate=""
+			autofocus="true"
+			row="7" 
+			col="2"
+			placeholder="" 
+			pattern=".*"
+		/>
+		</column>
+		</row>
+		<row>
+		<column>
+		  <field
+			name="address_phone"
+			type="text"
+			description=""
+			class="inputbox"
+			filter=""
+			label="Phone number"
+			maxlength="25"
+			required="true"
+			validate=""
+			autofocus="true"
+			row="8" 
+			col="1"
+			placeholder="" 
+			pattern=".*"
+		/>
+		</column>
+		<column>
+		  <field
+			name="address_fax"
+			type="text"
+			description=""
+			class="inputbox"
+			filter=""
+			label="Fax number"
+			maxlength="25"
+			required="true"
+			validate=""
+			autofocus="true"
+			row="8" 
+			col="2"
+			placeholder="" 
+			pattern=".*"
+		/> 
+		</column>
+		</row>
+
+
+		
+		<row>
+		<column>
+		  <field
+			name="existing_bussiness"
+			type="radio"
+			description=""
+			class="inputbox"
+			filter=""
+			label="Do you have any existing business in MP ?"
+			maxlength="25"
+			required="true"
+			validate=""
+			autofocus="true"
+			row="8" 
+			col="1"
+			placeholder=""> 
+				<option value="yes">Yes</option>
+				<option value="no">No</option>
+		</field>
+
+		</column> 
+		</row>
+		 
+		</fieldsgroup>  
+	 </fields> 
+  </tab>
+
+  
+  <tab id="tab2">
+	 <fields> 
+		<fieldsgroup label="Proprietor/Partners/Promoters/Directors of the Unit" group_id="tab2-fieldsgroup-1"> 
+			  
+			<row>
+				<column colspan="2">
+					<field
+					name="salutation"
+					type="select"
+					label="Salutation:"
+					required="true"
+					description="" 
+					row="1" 
+					col="1"
+					placeholder="">			
+						<option value="">Select</option>
+						<option value="Mr">Mr</option>
+						<option value="Mrs">Mrs</option>
+						<option value="Ms">Ms</option>
+					</field>  
+					<field
+						name="firstname"
+						type="text"
+						description=""
+						class="inputbox"
+						filter=""
+						label=""
+						maxlength="25"
+						required="true"
+						validate=""
+						autofocus="true" 
+						row="1" 
+						col="1"
+						placeholder="First Name"
+						pattern="[A-Za-z]{1,25}"
+						title="Letters only of 25 max length"
+				   /> 
+					<field
+						name="middlename"
+						type="text"
+						description=""
+						class="inputbox"
+						filter=""
+						label=""
+						maxlength="25"
+						required="true"
+						validate=""
+						autofocus="true" 
+						row="1" 
+						col="1"
+						placeholder="Middle Name"
+						pattern="[A-Za-z]{1,25}"
+						title="Letters only of 25 max length"
+				   />  
+					<field
+					name="lastname"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label=""
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true" 
+					row="1" 
+					col="1"
+					placeholder="Last Name"
+					pattern="[A-Za-z]{1,25}"
+					title="Letters only of 25 max length"
+				   />
+			   </column> 
+			  </row>
+			 <row>
+			<column>
+				<field
+				name="designation"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Designation"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="1" 
+				col="1"
+				placeholder="" 
+				pattern="[A-Za-z]{1,25}"
+				title="Letters only of 25 max length"
+			   />
+			</column>
+			</row>
+			<row>
+			<column>		   
+				<field
+				name="address"
+				type="textarea"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Address"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="1" 
+				col="1"
+				placeholder=""
+			   />  
+			 </column> 
+			 <column>		 
+				<field
+				name="address_country"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Country"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="1" 
+				col="1"
+				placeholder=""
+				newline="true"
+				pattern="[A-Za-z]{1,25}"
+				title="Letters only of 25 max length"
+			   /> 
+				<field
+				name="address_pincode"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Pincode"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="1" 
+				col="1"
+				placeholder=""
+				pattern="^[1-9][0-9]{5}$"
+				title="Invalid Pincode"
+			   />  
+			  </column>
+			  </row>
+			  <row>
+			  <column>
+				  <field
+					name="address_email"
+					type="email"
+					description=""
+					field="id"
+					filter=""
+					label="Email"
+					message="The email address you entered is already in use or invalid. Please enter another email address."
+					required="true"
+					maxlength="30"
+					unique="true"
+					validate=""
+					class="inputbox validate-email" 
+					row="1" 
+					col="1"
+					placeholder=""
+					pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+					/> 
+				</column>
+				<column>
+				  <field
+					name="address_mobile"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Mobile number"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true" 
+					row="1" 
+					col="1"
+					placeholder=""
+			pattern=".*"
+				/> 
+			</column>
+			</row>
+			<row>
+			<column>
+			  <field
+				name="address_phone"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Phone number"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="1" 
+				col="1"
+				placeholder=""
+			pattern=".*"
+			/>
+			</column>
+			<column>
+			  <field
+				name="address_fax"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Fax number"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="1" 
+				col="1"
+				placeholder=""
+			pattern=".*"
+			/> 
+			</column>
+			</row>
+
+		</fieldsgroup>  
+
+	 </fields> 
+
+</tab>
+
+
+<tab id="tab3">
+	 <fields> 
+		<fieldsgroup label="General Information" group_id="tab3-fieldsgroup-1"> 
+			<row>
+				<column>
+					<field
+					name="project_name"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Project Name :"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+			pattern=".*"
+				   /> 
+			   </column>
+			   <column>
+					<field
+					name="women_entrepreneur"
+					type="select"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Women Entrepreneur"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="2" 
+					parent=""
+					placeholder="">
+					<option value="">Select</option>
+					<option value="yes">Yes</option>
+					<option value="no">No</option> 
+				   </field> 
+			   </column>
+			</row>
+			<row>
+				<column>
+					<field
+					name="need_land"
+					type="radio"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Do you require land ?"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""> 
+						<option value="yes">Yes</option>
+						<option value="no">No</option> 
+				   </field> 
+			   </column>
+			</row>
+		</fieldsgroup>
+	 </fields> 
+</tab>
+
+<tab id="tab4">
+	 <fields> 
+		<fieldsgroup label="Proposed Fixed Investment (Rs. in Lacs)" group_id="tab3-fieldsgroup-1"> 
+			<row>
+				<column>
+					<field
+					name="land"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Land"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+			pattern=".*"
+				   /> 
+			   </column>
+			   <column>
+					<field
+					name="women_entrepreneur"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Site Development"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="2" 
+					parent=""
+					placeholder=""
+					pattern=".*"/> 
+			   </column>
+			   <column>
+					<field
+					name="building"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Building"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="2" 
+					parent=""
+					placeholder=""
+					pattern=".*"/> 
+			   </column>
+			</row> 
+		</fieldsgroup>
+	 </fields> 
+</tab>
+
+</service_1>

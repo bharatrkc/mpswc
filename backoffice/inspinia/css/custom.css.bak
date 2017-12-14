@@ -1,0 +1,336 @@
+body {
+    color: #333;
+}
+.has-success .control-label, .has-success .form-control {
+    border-color: #FFB236;
+}
+.label-primary, .badge-primary {
+    background-color: #FFB236;
+    color: #FFFFFF;
+}
+
+.btn-success {
+    background-color: #FFB236;
+    border-color: #FFB236;
+    color: #FFFFFF;
+}
+button.btn-success.dim {
+    box-shadow: inset 0 0 0 #FFB236, 0 5px 0 0 #FFB236, 0 10px 5px #999999;
+}
+.form-investor{
+	/*background-color:#fff;
+	padding: 30px 0px;*/
+	overflow: hidden;
+}
+
+.container-fluid{margin:0px;border:0px;}
+.row-bordered{border-bottom:1px solid #ccc;}
+.col{border-bottom:1px solid #ccc;padding:8px 10px;min-height: 40px;}
+.fa-list{font-size:20px;}
+ 
+.hasDatepicker {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	box-shadow: none!important;
+	outline: 0!important;
+}
+.input-group.date {
+    position: relative;
+    display: inline-table;
+    border-collapse: separate;
+    width: 64%;
+}
+.input-group.date .form-control{width:100%}
+.add-project .form-control, .add-project  .single-line { 
+   display: inline-block;
+    /* float: left; */
+    width: 64%;
+}
+.add-project label.control-label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: normal;
+    /* float: left; */
+    width: 35%;
+}
+.has-error .help-block {
+    width: 100%;
+     position: relative;  
+    width: 100%;
+/*    margin-left: 172px;*/
+    clear: both;
+text-align:right;
+}
+ .krajee-datepicker { 
+    display: inline-block;
+	/*float:left; */
+    width: 60%; 
+	padding-top:10px;
+	width:267px
+}
+.krajee-datepicker[readonly] {
+background-color: #fff!important;
+}
+
+.submit-button{ text-align:center;padding-right:30px;padding-top:20px;}
+
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 26px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+} 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;	
+    right: 0px;
+	padding:0px;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+} 
+.dropdown-content a:hover {
+    background-color: #4CAF50;color:#fff;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+} 
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+} 
+
+div.required label.control-label:after {
+    content: " *";
+    color: red;
+}
+
+
+.container-fluid{margin:0px;border:0px;}
+.row-bordered{border-bottom:1px solid #ccc;}
+.col{border-bottom:1px solid #ccc;padding:8px 10px;min-height: 40px;}
+.fa-list{font-size:20px;}
+ 
+.hasDatepicker {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	box-shadow: none!important;
+	outline: 0!important;
+}
+
+
+.control-label {
+    margin-top: 1px;
+    font-weight: 400;
+    width: 200px;
+	text-align:left!important;
+    vertical-align: top;
+}
+.hasDatepicker, .form-control, .form-group .bootstrap-select.btn-group {
+    display: inline-block;
+    width: 300px; 
+	height: auto;
+    padding: 3px 6px;
+}
+.bootstrap-select>.dropdown-toggle.bs-placeholder {
+
+}
+.btn { 
+    padding: 8px 25px;
+}
+
+.has-error .help-block{ 
+   /* padding-left: 210px;*/
+} 
+/*h3 {
+    font-size: 15px;
+    background-color: #32c5d2;
+    padding: 5px;
+	color:#fff;
+}*/
+
+
+
+.steps { 
+  padding: 0;
+  overflow: hidden;
+}
+.steps a {
+  color: white;
+  text-decoration: none;
+}
+.steps em {
+  display: block;
+  font-size: 11px;
+  font-weight: normal;
+}
+.steps li {
+  float: left;
+  margin-left: 0;
+  width: 150px; /* 100 / number of steps */
+  height: 80px; /* total height */
+  list-style-type: none;
+  padding: 5px 5px 5px 30px; /* padding around text, last should include arrow width */
+  border-right: 3px solid white; /* width: gap between arrows, color: background of document */
+  position: relative;
+}
+/* remove extra padding on the first object since it doesn't have an arrow to the left */
+.steps li:first-child {
+  padding-left: 5px;
+}
+/* white arrow to the left to "erase" background (starting from the 2nd object) */
+.steps li:nth-child(n+2)::before {
+  position: absolute;
+  top:0;
+  left:0;
+  display: block;
+  border-left: 25px solid white; /* width: arrow width, color: background of document */
+  border-top: 40px solid transparent; /* width: half height */
+  border-bottom: 40px solid transparent; /* width: half height */
+  width: 0;
+  height: 0;
+  content: " ";
+}
+/* colored arrow to the right */
+.steps li::after {
+  z-index: 1; /* need to bring this above the next item */
+  position: absolute;
+  top: 0;
+  right: -25px; /* arrow width (negated) */
+  display: block;
+  border-left: 25px solid #7c8437; /* width: arrow width */
+  border-top: 40px solid transparent; /* width: half height */
+  border-bottom: 40px solid transparent; /* width: half height */
+  width:0;
+  height:0;
+  content: " ";
+}
+
+/* Setup colors (both the background and the arrow) */
+
+/* Completed */
+.steps li { background-color: #7C8437; margin-top:10px; }
+.steps li::after { border-left-color: #7c8437; }
+
+/* Current */
+.steps li.current { background-color: #C36615; }
+.steps li.current::after { border-left-color: #C36615; }
+
+/* Following */
+.steps li.current ~ li { background-color: #EBEBEB; }
+.steps li.current ~ li::after { border-left-color: #EBEBEB; }
+
+/* Hover for completed and current */
+.steps li:hover {background-color: #696}
+.steps li:hover::after {border-left-color: #696}
+
+
+.krajee-datepicker[readonly]
+{
+background-color: #fff!important;
+}
+
+
+
+
+
+
+
+
+
+
+/** custom changes in dashboard **/
+
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.portlet-title{
+    background-color: #34bfa3;
+    border-color: #34bfa3;
+    padding: 10px 5px;
+    margin-bottom: 10px;
+}
+.portlet-title .caption{
+    color: #FFF;
+    font-size:17px;
+
+}
+.portlet-title .caption i{
+	margin-right: 12px;
+}
+
+.portlet.box {
+    background:#FFF;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1)
+}
+
+.portlet .portlet-body {
+    padding: 15px;
+}
+
+div#investorprojects-project_finalized {
+    display: inline-block;
+}
+.element-label {
+    margin-top: 1px;
+    font-weight: 400;
+    width: 200px;
+    text-align: left !important;
+    vertical-align: top;
+}
+
+.element input , .element select {
+    border: 1px solid #e5e6e7;
+}
+
+.portlet-title {
+    background-color:#293846;
+    border-color:#293846; 
+	padding: 5px 10px 2px;
+}

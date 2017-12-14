@@ -1,0 +1,4 @@
+Tue Aug 29 04:49:57 2017 [2172][-none-][FATAL] Could not connect to DB server localhost as root. port : No connection could be made because the target machine actively refused it.
+
+Tue Aug 29 05:35:45 2017 [2172][1][FATAL] ERROR: rmdir_recursive(): argument cache/themes/SuiteP/modules is not a file or a dir.
+Tue Aug 29 05:36:06 2017 [2172][1][FATAL] ERROR: rmdir_recursive(): argument cache/themes/SuiteP/modules is not a file or a dir.

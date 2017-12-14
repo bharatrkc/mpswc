@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <service_1>
+  <navbar>  
+    <tab Label="License as Manufacturer of Weights & Measures" id="tab1"/> 
+  </navbar>
+  <tab id="tab1">
+	 <fields> 
+		<fieldsgroup label="" group_id="tab1-fieldsgroup-1"> 
+			<row>
+			 <column>
+				<field
+				name="date_of_establishment_of_workshop"
+					type="date"
+					description="" 
+					label="Date of establishment of workshop/factory" 
+					required="true"
+					validate=""
+					autofocus="true"
+					format="%d-%m-%Y" 
+					filter=""
+					class="readonly validate-date" 
+					maxlength="25" 
+					row="3" 
+					col="1" 
+					placeholder="" 
+					 
+					max="2018-01-01" 
+					min="1960-01-02" 
+				   />  
+			   </column> 
+			</row>
+		</fieldsgroup>
+
+		<fieldsgroup label="The types of weights and measures proposed to be manufactured viz:" group_id="tab1-fieldsgroup-2">
+			<row> 
+				<column>
+					<field
+					name="types_of_weights_and_measures"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Tube wells/Boilers"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[a-zA-Z0-9_]+$"
+					title="Invalid value"
+				   /> 
+			   </column> 
+			   
+				<column>
+					<field
+					name="types_of_weights_and_measures_instruments"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Tube wells/Boilers"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[a-zA-Z0-9_]+$"
+					title="Invalid value"
+				   /> 
+			   </column> 
+			</row> 
+			
+			<row> 
+				<column>
+					<field
+					name="types_of_weights_and_measures_instruments_details"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Measuring instruments With details in each case"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[a-zA-Z0-9_]+$"
+					title="Invalid value"
+				   /> 
+			   </column>  
+			</row>
+			
+			</fieldsgroup>
+
+			<fieldsgroup label="The number of persons employed/proposed to be employed" group_id="tab1-fieldsgroup-3">
+			<row>
+			<column>
+				<field
+				    name="number_of_persons_employed_semi_skilled"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Semi-skilled"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[+-]?([0-9]*[.])?[0-9]+$" 
+					title="Invalid value"
+				   /> 
+			</column>
+			<column>
+				<field
+				    name="number_of_persons_employed_semi_unskilled"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Unskilled"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[+-]?([0-9]*[.])?[0-9]+$" 
+					title="Invalid value"
+				   /> 
+			</column>
+			</row>
+			<row>
+			<column>
+				<field
+				    name="number_of_persons_employed_specialist"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="Specialist trained in line"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[+-]?([0-9]*[.])?[0-9]+$" 
+					title="Invalid value"
+				   /> 
+			</column>
+			</row>
+			<row>
+			<column>
+				<field
+					name="monogram_trademark"
+					type="text"
+					description=""
+					class="inputbox"
+					filter=""
+					label="The monogram/trademark intended to be imprinted on weights and measures to be manufactured"
+					maxlength="25"
+					required="true"
+					validate=""
+					autofocus="true"
+					row="1" 
+					col="1" 
+					parent=""
+					placeholder=""
+					pattern="^[a-zA-Z0-9_]+$"
+					title="Invalid value"
+				 /> 
+			</column> 
+				<column>
+				<field
+				name="details_of_machinery"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Details of machinery, tools, accessories owned and used for manufacturing weights and measures etc."
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="1" 
+				col="1" 
+				parent=""
+				placeholder=""
+				pattern="^[a-zA-Z0-9_]+$"
+				title="Invalid value"
+			   /> 
+			   </column>
+				<column>
+				<field
+				name="details_of_foundry"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Details of foundry or workshop facilities arranged. Whether ownership or long term lease etc."
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="1" 
+				col="1" 
+				parent=""
+				placeholder=""
+				pattern="^[a-zA-Z0-9_]+$"
+				title="Invalid value"
+			   /> 
+			   </column>
+			</row>
+			<row>
+			   <column>
+				<field
+				name="facilities_of_steel_casting"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Facilities of steel casting and hardness testing of vital parts etc. Or other means"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="2"
+				placeholder=""
+				pattern="^[a-zA-Z0-9_]+$"
+				title="Invalid value"
+			   /> 
+			   </column>  
+			   <column>
+				<field
+				name="availability_of_electrical_energy"
+				type="select"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Availability of electrical energy"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true" 
+				row="5" 
+				col="1"
+				placeholder="">
+					<option value="">Select</option>
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field> 
+			   </column>  
+			</row>			
+			<row>
+			   <column>
+				<field
+				name="whether_any_loan_received"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Whether any loan received from government or financial institution. If yes give details"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="2"
+				placeholder=""
+				pattern="^[a-zA-Z0-9_]+$"
+				title="Invalid value"
+			   /> 
+			   </column>  
+			   <column>
+				<field
+				name="name_of_bankers"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Name of bankers if any"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="2"
+				placeholder=""
+				pattern="^[a-zA-Z0-9_]+$"
+				title=""
+			   /> 
+			   </column>  
+			</row> 
+			<row>
+			   <column>
+				<field
+				name="vat_number"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Vat number/cst number/professional tax registration number/it number"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="2"
+				placeholder=""
+				pattern="^[a-zA-Z0-9_]+$"
+				title="Numeric only"
+			   /> 
+			   </column>  
+			   <column>
+				<field
+				name="have_you_applied_previously_for_a_manufacturer_license"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Have you applied previously for a manufacturer’s license? If yes when with what result."
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="2"
+				placeholder=""
+				pattern="^[a-zA-Z0-9_]+$"
+				title="Alphanumeric only"
+			   /> 
+			   </column>  
+			</row> 
+			<row>
+			   <column>
+				<field
+				name="whether_the_item_proposed_to_be_manufactured"
+				type="text"
+				description=""
+				class="inputbox"
+				filter=""
+				label="Whether the item(s) proposed to be manufactured will be sold within the state/outside the state"
+				maxlength="25"
+				required="true"
+				validate=""
+				autofocus="true"
+				row="6" 
+				col="2"
+				placeholder=""
+				pattern="^[+-]?([0-9]*[.])?[0-9]+$" 
+				title="Numeric only"
+			   /> 
+			   </column>    
+			</row> 
+		</fieldsgroup>
+	 </fields> 
+</tab>
+
+</service_1>

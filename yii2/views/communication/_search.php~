@@ -1,0 +1,51 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+/* @var $this yii\web\View */
+/* @var $model app\models\Communicationsearch */
+/* @var $form yii\widgets\ActiveForm */
+?>
+
+<div class="wrapper wrapper-content animated fadeInRight"> 
+
+<div class="form-communication create">
+	<div class="col-lg-12">
+		<div class="portlet box green">
+			<div class="portlet-title">
+				<div class="caption"><i class="fa fa-list"></i>Communication</div>
+					<div class="tools"> </div>
+		</div>
+
+		<div class="portlet-body">
+			<div class="row">
+					
+				<div class="col-lg-12">
+
+					<?php $form = ActiveForm::begin([
+						'action' => ['index'],
+						'method' => 'get',
+					]); ?>
+
+					<?= $form->field($model, 'id') ?>
+
+					<?= $form->field($model, 'caf_id') ?>
+
+					<?= $form->field($model, 'communication_detail') ?>
+
+					<?= $form->field($model, 'date_created') ?>
+
+					<div class="form-group">
+						<?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+						<?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+					</div>
+
+					<?php ActiveForm::end(); ?>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

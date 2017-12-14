@@ -1,0 +1,655 @@
+<?php
+namespace app\controllers;
+
+use Yii;
+use app\models\InvestorProject;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+use app\models\User;
+use app\models\UserProfile;
+use app\models\InvestorProjectDetail;
+use app\models\InvestorProjects;
+use app\models\Services;
+use app\models\Caf;
+use app\models\District;
+use app\models\Grievance;
+use app\models\Notifications;
+
+use yii\helpers\BaseUrl;
+
+class TrifacController extends \app\components\BaseController {
+
+	
+
+    public function actionIndex() { 
+
+        return $this->redirect(['trifac/deptdash']);
+
+    } 
+
+    public function actionMap() { 
+
+        return $this->render('map');
+
+    } 
+
+		
+	public function actionDeptdash() {
+	
+	
+	   //////////////////////////////start preveous//////////////////////////////////////////////////
+                 
+
+		$this->layout = 'investorLayoutIspiniaTrifac';
+ 
+        //  $user_id = Yii::$app->user->identity->id;
+		
+		$user_id = Yii::$app->user->identity->id; 
+		
+		// $project_id = Yii::$app->getRequest()->getQueryParam('projectId');
+		
+        $query = InvestorProjects::find();  
+        $investor_project = $query->all(); 
+		
+		$commandselect = Yii::$app->db->createCommand(
+			"select a.id as project_id,a.total_investment as total_investment,
+			b.project_id as caf_project_id, b.total_project_value,b.id as caf_id  
+			from  yii_investor_projects as a 
+			inner join 
+			yii_caf as b 
+			on a.id = b.project_id"
+			);
+
+		$modelcons = $commandselect->queryAll();
+		
+		$sumtotproval = 0;
+		$sumtotcafval = 0;
+		
+		foreach($modelcons as $key=>$val)
+		{
+			$sumtotproval = $sumtotproval + $modelcons[$key]['total_investment'];
+			$sumtotcafval = $sumtotcafval + $modelcons[$key]['total_project_value'];
+		}
+		
+		$totvalall = array();
+		
+		$totvalall['sumtotproval'] = $sumtotproval;
+		$totvalall['sumtotcafval'] = $sumtotcafval;
+		
+		
+		$commandselectnot = Yii::$app->db->createCommand(
+		"select a.id as project_id,a.total_investment as total_investment 
+		from  yii_investor_projects as a 
+		WHERE  NOT EXISTS
+		(
+		SELECT NULL from yii_caf as b 
+		where a.id = b.project_id
+		)
+		"
+		);
+
+		$modelconsnot = $commandselectnot->queryAll();
+
+		
+		$sumtotprovalnot = 0;
+		
+		foreach($modelconsnot as $key=>$val)
+		{
+			$sumtotprovalnot = $sumtotprovalnot + $modelconsnot[$key]['total_investment'];
+		}
+		
+		$totvalallnot = array();
+		
+		$totvalallnot['sumtotproval'] = $sumtotprovalnot;
+
+		
+		
+		
+		$commandsector = Yii::$app->db->createCommand(
+			"select a.sector as sector, sum(a.total_project_value) as total_value
+			from  yii_caf as a 
+			group by a.sector"
+			);
+
+		$modelsectors = $commandsector->queryAll();
+		
+		$totsecval = 0;
+		
+		foreach($modelsectors as $keysec=>$valsec)
+		{
+			$totsecval = $modelsectors[$keysec]['total_value'] + $totsecval;
+		}
+		
+		
+		$commandsectornot = Yii::$app->db->createCommand(
+			"select a.sector as sector, sum(a.total_investment) as total_investment
+			from  yii_investor_projects as a 
+			
+			WHERE  NOT EXISTS
+			(
+			SELECT NULL from yii_caf as b 
+			where a.id = b.project_id
+			)
+			
+			group by a.sector"
+			);
+
+		$modelsectorsnot = $commandsectornot->queryAll();
+		
+		$totsecvalnot = 0;
+		
+		foreach($modelsectorsnot as $keysec=>$valsec)
+		{
+			$totsecvalnot = $modelsectorsnot[$keysec]['total_investment'] + $totsecvalnot;
+		}
+		
+		
+		$investment_cost = 0;
+		$total_project = 0;
+		$under_rev = 0;
+		$not_final = 0;
+		$proj_final = 0;
+		$part_final = 0;
+
+		$investorproject_detail = array();
+		
+
+
+			foreach($investor_project as $investorProject) {
+			
+						$query = investorProjectDetail::find();
+
+						$investorproject_detail[$investorProject->id] = $query->where(['project_id'=>$investorProject['id']])->all();
+
+						$investment_cost = $investorProject['total_investment'] + $investment_cost;
+
+						$total_project = $total_project + 1;
+
+						if($investorProject['department_approval']==0 && $investorProject['project_finalized']==1)
+						{
+							$under_rev = $under_rev + 1;
+						}
+
+						if($investorProject['project_finalized']==0 && $investorProject['department_approval']==0)
+						{
+							$not_final = $not_final + 1;
+						}
+
+						if($investorProject['project_finalized']==1 && $investorProject['department_approval']==1)
+						{
+							$proj_final = $proj_final + 1;
+						}
+
+						if($investorProject['project_finalized']==1)
+						{
+							$part_final = $part_final + 1;
+						}
+				}
+		
+				$wgetcount['investment_cost'] = $investment_cost;
+				$wgetcount['total_project'] = $total_project;
+				$wgetcount['under_rev'] = $under_rev;
+				$wgetcount['not_final'] = $not_final;
+				$wgetcount['proj_final'] = $proj_final;
+				$wgetcount['part_final'] = $part_final;
+
+				$services = '';
+				$services_map = array();
+
+				$i=1;
+
+				//Precho::pre($investorproject_detail);exit();
+
+				foreach($investorproject_detail as $key => $investorproject_details) {
+							
+					foreach($investorproject_details as $investorprojectdetail) {
+						$query = Services::find();
+						$services = $query->where(['id' => $investorprojectdetail->service_id, 'status' => 'A'])->all(); 
+
+						if(isset($services[0])) {
+							$id = $services[0]->id;
+							$services_map[$key][$id]['name'] = $services[0]->services;
+							$services_map[$key][$id]['department'] = $services[0]->department;
+						}
+					}
+					
+				$modelcaf = Caf::find()->where(['project_id'=>$key])->one();
+				//echo "<pre>";
+				//print_r($modelcaf);
+				//echo "</pre>";
+
+				$services_map[$key]['caf'] = $modelcaf;
+
+				//echo "<br>";
+				
+				// echo $modelcaf->proposed_site_district;
+				
+				$distid = $services_map[$key]['caf']['proposed_site_district'];
+				
+				if($distid!='')
+				{
+					$growarray = District::find()->select(['district_id','name'])->where(['district_id' => $distid])->one();
+					
+					//echo "<pre>";
+					//echo $growarray['district_id'];
+					//echo "<br>";
+					
+					
+					if(!empty($growarray['district_id']))
+					{
+						$services_map[$key]['dist_name'] = $growarray['name'];
+						$cafid = $services_map[$key]['caf']['id'];
+						$sortteddata[$cafid] = $services_map[$key]['dist_name'];
+					}
+				}
+			}
+
+			$val_distvise = array_count_values($sortteddata);
+
+			$grievance = Grievance::find()->where(['<>','grievance_status','C'])->all();
+		
+			$griev = array();
+				
+			foreach($grievance as $grievancekey=>$grievanceval)
+			{
+				$griev[$grievancekey]['grev_details'] = $grievanceval;
+				$griev[$grievancekey]['user_details'] = UserProfile::find()->select(['user_id','first_name'])->where(['user_id' => $grievanceval['grievence_created_by']])->one();
+				$griev[$grievancekey]['proj_details'] = InvestorProjects::find()->select(['id','project'])->where(['id' => $grievanceval['project_id']])->one();
+				$griev[$grievancekey]['serve_details'] = Services::find()->select(['id','services'])->where(['id' => $grievanceval['service_id']])->one();
+			}
+
+			//echo $grievance->createCommand()->getRawSql();
+
+			//echo "<pre>";
+			// print_r($investor_project);
+			//echo "</pre>";
+		
+        return $this->render('dashboard', [
+            'investor_project' => $investor_project,
+            'investorproject_detail' => $investorproject_detail,
+            'services' => $services_map,
+			'distjson'=> $val_distvise,
+			'wgetcount' => $wgetcount,
+			'grievance' => $griev,
+			'totvalall' => $totvalall,
+			'modelsectors'=>$modelsectors,
+			'modelsectorsnot'=>$modelsectorsnot,
+			'totvalallnot'=>$totvalallnot,
+        ]);
+
+	///////////////////////////////preveveous////////////////////////////////////////
+		
+	
+	//return $this->render('dashboard');
+
+	}
+	
+	public function actionProapprove() {
+	
+	$user_id = Yii::$app->user->identity->id;
+	//$project_id = Yii::$app->getRequest()->getQueryParam('projectId');
+		
+		$request = Yii::$app->request;
+		$project_id = $request->get();
+		
+		if ($project_id) {
+			if(isset($project_id['projectId'])) {
+
+						if(isset($project_id['isReject']))
+						{
+							if($project_id['isReject']=="true")
+							{
+									Yii::$app->db->createCommand("update yii_investor_projects set department_approval=:value1, updated_by=:value2 where id=:id")
+								->bindValue(':id',$project_id['projectId'])
+								->bindValue(':value1','2')
+								->bindValue(':value2',$user_id)
+								->execute();
+
+
+								$cafid = $project_id['projectId'];
+								$serviceid = '' ;
+								$userid = $user_id ;
+								$eventname = "rejected"; // Can be "add", "update" , "delete"
+								$notifytext = "A Project is rejected from Trifac";
+								$datenotify = date('Y-m-d H:i:s');
+
+								$arr_param = array(
+								'r'=>'notifications/createnotifications',
+								'caf_id'=>$cafid,
+								'service_id'=>$serviceid,
+								'user_id'=>$userid,
+								't_event'=>$eventname,
+								'notification_detail'=>$notifytext,
+								'date_created'=>$datenotify );
+
+								$urlto_hit = "http://".$_SERVER['HTTP_HOST'].BaseUrl::base()."/index.php?";
+								$urlto_hit .= http_build_query($arr_param,'','&');
+								$json_reply = file_get_contents($urlto_hit) or die(print_r(error_get_last()));
+
+
+
+								Yii::$app->getSession()->setFlash('success', 'Project Rejected');
+								return $this->redirect(['trifac/deptdash']);
+								}
+								//$model=InvestorProjects::findOne(['id'=>$project_id['projectId']]);
+								//$model->department_approval='1';
+								//$model->updated_by = $user_id;
+								//$model->save();
+						}
+						else
+						{
+							Yii::$app->db->createCommand("update yii_investor_projects set department_approval=:value1, updated_by=:value2 where id=:id")
+							->bindValue(':id',$project_id['projectId'])
+							->bindValue(':value1','1')
+							->bindValue(':value2',$user_id)
+							->execute();
+
+
+							$cafid = $project_id['projectId'];
+							$serviceid = '' ;
+							$userid = $user_id ;
+							$eventname = "approved"; // Can be "add", "update" , "delete"
+							$notifytext = "A Project is approved from Trifac";
+							$datenotify = date('Y-m-d H:i:s');
+
+							$arr_param = array(
+							'r'=>'notifications/createnotifications',
+							'caf_id'=>$cafid,
+							'service_id'=>$serviceid,
+							'user_id'=>$userid,
+							't_event'=>$eventname,
+							'notification_detail'=>$notifytext,
+							'date_created'=>$datenotify );
+
+							$urlto_hit = "http://".$_SERVER['HTTP_HOST'].BaseUrl::base()."/index.php?";
+							$urlto_hit .= http_build_query($arr_param,'','&');
+							$json_reply = file_get_contents($urlto_hit) or die(print_r(error_get_last()));
+
+
+
+							Yii::$app->getSession()->setFlash('success', 'Project Approved');
+							return $this->redirect(['trifac/deptdash']);
+						}
+							//$model=InvestorProjects::findOne(['id'=>$project_id['projectId']]);
+							//$model->department_approval='1';
+							//$model->updated_by = $user_id;
+							//$model->save();
+
+				}
+		}
+	}
+	
+	public function actionDeptpro() {
+	
+    
+       //$this->layout = 'investorLayoutIspiniaDashboard';
+	   
+
+	   //////////////////////////////start preveous//////////////////////////////////////////////////	       
+                 
+
+		$this->layout = 'investorLayoutIspiniaTrifac';
+ 
+        //  $user_id = Yii::$app->user->identity->id;
+		
+		$user_id = Yii::$app->user->identity->id; 
+		$project_id = Yii::$app->getRequest()->getQueryParam('projectId');
+		
+        $query = InvestorProjects::find();  
+        $investor_project = $query->where(['id' => $project_id])->all(); 
+
+		$investorproject_detail = array();
+		foreach($investor_project as $investorProject) {
+			$query = investorProjectDetail::find();
+			$investorproject_detail = $query->where(['project_id' => $project_id])->all(); 
+			$modelcafvn[$investorProject->id] = Caf::find()->where(['project_id'=>$investorProject->id])->one();
+		}
+		
+		$services = '';
+		$services_map = array();
+
+		foreach($investorproject_detail as $investorprojectdetail) { 
+			$query = Services::find();  
+			$services = $query->where(['id' => $investorprojectdetail->service_id, 'status' => 'A'])->all(); 
+			
+			if(isset($services[0])) {
+				$id = $services[0]->id;
+				$services_map[$id]['name'] = $services[0]->services;
+				$services_map[$id]['department'] = $services[0]->department;
+				$services_map[$id]['sla_duration'] = $services[0]->sla;
+			}
+		}
+		
+		foreach($modelcafvn as $key1=>$val)
+		{
+			$modelcafvn['noti'][$key1] = Notifications::find()->where(['caf_id'=>$key1])->all();
+		}
+		// echo "<pre>";
+		// print_r($modelcafvn['noti']);
+		
+        $request = Yii::$app->request;
+		$post = $request->post();
+		if (count($post)) {
+			if(isset($post['services'])) {
+				$services = $post['services']; 				
+				foreach($services as $service) {
+					$model = InvestorProjectDetail::findOne(['project_id' => $project_id, 'service_id' => $service]);
+					$model->status = '2'; 
+					$model->updated_by = $user_id;
+					$model->save();
+				}
+				//return $this->redirect(['caf/services', 'project_id' => $project_id]);
+				return $this->redirect(['investor/service', 'project_id' => $project_id]);
+			}
+			else {
+				//return $this->redirect(['caf/services', 'project_id' => $project_id]);
+				return $this->redirect(['investor/service', 'project_id' => $project_id]);
+			}
+		}
+        return $this->render('deptpronew', [
+            'investor_project' => $investor_project,
+            'investorproject_detail' => $investorproject_detail,
+            'services' => $services_map,
+			'modelcafvn' => $modelcafvn,
+			
+        ]);
+
+		///////////////////////////////preveveous////////////////////////////////////////
+	
+		}
+	
+	public function actionGoldstand() {
+
+             return $this->render('goldstand');
+        }
+
+	public function actionMonthstar() {
+
+             return $this->render('monthstar');
+        }
+	
+	public function actionInvestfeedbk() {
+
+             return $this->render('investfeedback');
+        }
+	
+	public function actionSectorwisepol() {
+		if(Yii::$app->request->isAjax)
+		{
+
+		    $this->enableCsrfValidation = false;
+
+            $lid = ($_POST['sector']);
+		
+	 $sql = "select b.project as project,a.sector as sector,b.investor_name as investor_name, a.total_project_value as total_value
+			from  yii_caf as a
+			left join yii_investor_projects as b
+			on a.project_id = b.id
+			where a.sector = '".$lid."'";
+		$commandsector = Yii::$app->db->createCommand(
+			$sql
+			);
+
+		$modelsectors = $commandsector->queryAll();
+	 	$totsecval = 0;
+		
+		echo '
+		<table class="table">
+			<thead>
+			<tr>
+
+			<th>
+			Project Name
+			</th>
+			<th>
+			Investor
+			</th>
+			<th style="text-align:right;">
+			Project Value
+			</th>
+
+			</tr>
+			</thead>
+			<tbody>
+		';
+		
+		foreach($modelsectors as $keysec=>$valsec)
+		{
+			
+			echo '<tr>
+					<td>
+					'
+			.$valsec['project'].
+					'
+					</td>
+					<td>
+		'.$valsec['investor_name'].'
+					</td>
+					<td style="text-align:right;">
+		'.$valsec['total_value'].' Cr
+					</td>
+
+				</tr>
+
+			';
+			
+			$totsecval = $modelsectors[$keysec]['total_value'] + $totsecval;
+		}
+
+		
+		echo '
+		</tbody>
+		<tfoot>
+		<tr>
+		<th>
+		</th>
+		<th>
+		Total
+		</th>
+		<th style="text-align:right;">
+		'.$totsecval.' Cr
+		</th>
+		</tr>
+		</tfoot>
+		</table>';
+		}
+    }
+
+	
+		public function actionSectorwisepolpro() {
+		if(Yii::$app->request->isAjax)
+		{
+
+		    $this->enableCsrfValidation = false;
+
+            $lid = ($_POST['sector']);
+		
+	 $sql = " 
+   	 select a.project as project,a.id as project_id,a.investor_name as investor_name,a.total_investment as total_value 
+		from  yii_investor_projects as a 
+		WHERE
+		
+		a.sector = '".$lid."'
+		
+		and
+		
+		NOT EXISTS
+		(
+		SELECT NULL from yii_caf as b 
+		where a.id = b.project_id
+		)
+		
+	 	 ";
+
+		$commandsector = Yii::$app->db->createCommand(
+			$sql
+			);
+
+		$modelsectors = $commandsector->queryAll();
+	 	$totsecval = 0;
+		
+		echo '
+		<table class="table">
+			<thead>
+			<tr>
+
+			<th>
+			Project Name
+			</th>
+			<th>
+			Investor
+			</th>
+			<th style="text-align:right;">
+			Project Value
+			</th>
+
+			</tr>
+			</thead>
+			<tbody>
+		';
+		
+		foreach($modelsectors as $keysec=>$valsec)
+		{
+			
+			echo '<tr>
+					<td>
+					'
+			.$valsec['project'].
+					'
+					</td>
+					<td>
+		'.$valsec['investor_name'].'
+					</td>
+					<td style="text-align:right;">
+		'.$valsec['total_value'].' Cr
+					</td>
+
+				</tr>
+
+			';
+			
+			$totsecval = $modelsectors[$keysec]['total_value'] + $totsecval;
+		}
+
+		
+		echo '
+		</tbody>
+		<tfoot>
+		<tr>
+		<th>
+		</th>
+		<th>
+		Total
+		</th>
+		<th style="text-align:right;">
+		'.$totsecval.' Cr
+		</th>
+		</tr>
+		</tfoot>
+		</table>';
+		}
+    }
+
+
+}

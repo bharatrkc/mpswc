@@ -1,0 +1,607 @@
+<?php
+use yii\helpers\Html;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\widgets\Breadcrumbs;
+use app\assets\AppAsset; 
+use yii\widgets\ActiveForm;
+use yii\helpers\Url;
+use yii\bootstrap\Tabs;
+
+use yii\web\View;
+ 
+$this->title = 'Dashboard'; 
+$this->params['breadcrumbs'][] = $this->title; 
+?>
+<style>
+thead th{cursor:pointer;}
+.p-lg {
+    padding: 5px 30px;
+}
+ .msgnthe{
+	border-top:none !important;
+	background-color:white !important;
+}
+.problue {
+	background-color: #507fd4; 
+	color:white;
+}
+.proorg {
+	background-color: #d4a550; 
+	color:white;
+}
+.progreen {
+	background-color: #50d48b; 
+	color:white;
+}
+.progray {
+	background-color: #cacecc; 
+	color:white;
+}
+
+@media screen and (min-width: 600px) {
+    .vwport {
+        width:100%; 
+        font-size: 2vw;
+    }
+}
+ @media screen and (max-width: 599px) and (min-width: 100px) {
+    .vwport {
+        width:100%; 
+        font-size: 3vw;
+    }
+}
+
+	
+	.btn-warningmine
+	{
+		color:white;
+	    background-color: #f8ac59;
+	}
+	
+	.btn-primarymine
+	{
+		color:white;
+	    background-color: #1ab394;
+	}
+	
+	.btn-dangermine
+	{
+		color:white;
+	    background-color: #ed5565;
+	}
+</style>
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+    <div class="ibox-content m-b-sm border-bottom">
+	<?php
+		$i = 0;
+		$count_draft = 0;
+		$count_comp = 0;
+		$dartft = 0;
+		$compstst = 0;
+		if(count($investor_project)) { 
+		foreach ($investor_project as $project){ 
+			if(isset($project->id)) {
+				 $proid = $project->id;  
+				 $proname = $project->project;
+				 $sectorname = $project->sector; 
+				 $uupdate = $project->updated; 
+				 $updateby = $project->updated_by; 
+				 $ucreate = $project->created; 
+				 $ucreateby = $project->created_by;
+				 $investorname = $project->investor_name; 
+			}
+		}
+	}
+
+	$i = 0;
+	if(isset($investorproject_detail)) {
+		if(count($investorproject_detail)) {	
+			//$i = 0;
+			$count_draft = 0;
+			$count_comp = 0;
+			$dartft = 0;
+			$compstst = 0;
+			
+			$count_draft = 0;
+			$count_comp = 0;
+
+			foreach ($investorproject_detail as $service){
+				$i = $i+1;
+				$service_id = $service->service_id;
+
+				$disabled = '';
+				$checked = '';
+				$img = '';
+				if($service->status) {
+					$disabled = 'disabled';
+					$checked = 'checked';
+				 if(($service->status==2) && ($service->completed==''))
+					{
+						$count_draft = $count_draft + 1;
+					}
+				}
+
+				if($service->completed) {
+					$count_comp = $count_comp + 1;
+				}
+			}
+		}
+	}
+?>
+	<div class="">
+		<?php if($i != 0) { ?>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="ibox">
+						<div class="ibox-title" style="border: none;">
+							<h4>Total Services : <?php echo $i; ?> </h4>
+						</div>
+						<div class="ibox-content">
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2">
+								<div class="widget gray-bg p-lg text-center" id="animation_box1" data-animation="pulse">
+									<div class="m-b-md">
+										<i class="fa fa-warning fa-4x"></i>
+										<h1 class="m-xs"><?php echo $i-($count_draft+$count_comp); ?></h1>
+										<h3 class="font-bold no-margins">Incomplete</h3>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-2">
+								<div class="widget yellow-bg p-lg text-center" id="animation_box2" data-animation="pulse">
+									<div class="m-b-md">
+										<i class="fa fa-clock-o fa-4x"></i>
+										<h1 class="m-xs"><?php echo $count_draft; ?></h1>
+										<h3 class="font-bold no-margins">Pending</h3>                            
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-2">
+								<div class="widget red-bg p-lg text-center" id="animation_box3" data-animation="pulse">
+									<div class="m-b-md">
+										<i class="fa fa-send fa-4x"></i>
+										<h1 class="m-xs"><?php echo $count_comp; ?></h1>
+										<h3 class="font-bold no-margins">Forwarded</h3>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-2">
+								<div class="widget navy-bg p-lg text-center" id="animation_box4" data-animation="pulse">
+									<div class="m-b-md">
+										<i class="fa fa-thumbs-up fa-4x"></i>
+										<h1 class="m-xs">0</h1>
+										<h3 class="font-bold no-margins">Approved</h3>
+									</div>
+								</div>
+							 </div>                
+							<div class="col-lg-2">
+								<div class="widget blue-bg p-lg text-center" id="animation_box5" data-animation="pulse">
+									<div class="m-b-md">
+										<i class="fa fa-thumbs-down fa-4x"></i>
+										<h1 class="m-xs">0</h1>
+										<h3 class="font-bold no-margins">Rejected</h3>
+									</div>
+								</div>
+							</div>
+
+					</div>
+            </div>
+           </div>
+        </div>
+		<?php } ?>
+      </div>
+       
+        <div class="row">
+			<div class="col-lg-12">
+				<div class="ibox" style="border: none;">
+					<div class="ibox-title" style="border: none;">
+                    <h3><?php echo $proname; ?></h3>
+				</div>
+
+				<div class="ibox-content">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<span class="badge" style="background-color:#23c6c8; float:right;"><h4><?php echo $proid; ?></h4></span>
+									<h4>Project ID</h4>
+								</div> 
+								<ul class="list-group">          
+                                            <li class="list-group-item ">
+                                                <span class="badge badge-info">Bhopal</span>
+                                                District Name
+                                            </li>
+                                        
+                                            <li class="list-group-item">
+                                                <span class="badge badge-primary"><?php echo date('d M Y H:i:s',strtotime($ucreate)); ?></span>
+                                                Date Created 
+                                            </li>
+                                            <li class="list-group-item ">
+                                                <span class="badge badge-info"><?php echo date('d M Y H:i:s',strtotime($uupdate)); ?></span>
+                                                Last Update 
+                                            </li>
+                                        
+                                            <li class="list-group-item">
+                                                <span class="badge badge-primary"><?php echo $investorname; ?></span>
+                                                Investor Name
+                                            </li>
+                                            <li class="list-group-item ">
+                                                <span class="badge badge-info"><?php echo $ucreateby; ?></span>
+                                                User ID
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                 <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                                        <h4>Notification</h4>
+                         </div>
+                            <ul class="sortable-list connectList agile-list ui-sortable list-group" id="todo">
+                                <li class="list-group-item msgnthe" id="task1">
+                                    
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+            </div>
+    </div>
+</div>
+ 
+<div class="ibox-content m-b-sm border-bottom">
+	<div class="row">
+		<div class="ibox-content" style="border: none;">
+			<h3>Apply for Pre Establishment Services</h3>
+			
+			<?php
+				if(count($investorproject_detail) == 0) {
+				?>
+					<div class="col-lg-5">
+						<a href="<?= Url::to(['wizard/prestablish', 'id' => $project->id]) ?>">
+							<button class="btn btn-success dim btn-large-dim btn-outline vwport" type="button" style="font-size: 15px;padding: 10px 15px 5px 15px;height: auto;"><i class="fa fa-chain"></i> Through Wizard</button></a>
+					</div>
+			<?php } ?>
+
+			<div class="col-lg-5">
+				<a href="<?= Url::to(['caf/services-manual', 'projectId' => $project->id, 'type' => 'pre-establishment']) ?>">
+					<button class="btn btn-warning  dim btn-large-dim btn-outline vwport" type="button" style="font-size: 15px;padding: 10px 15px 5px 15px;height: auto;"><i class="fa fa-edit"></i> Manually through services list</button>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<?php
+	if(count($investorproject_detail)) {
+				?>
+	<div class="row">
+		<div class="ibox-content" style="border: none;">
+			<h3>Apply for Pre Operational Services</h3>
+			<div class="col-lg-5">
+				<a href="<?= Url::to(['wizard/pre-operational', 'id' => $project->id]) ?>">
+					<button class="btn btn-success dim btn-large-dim btn-outline vwport" type="button" style="font-size: 15px;padding: 10px 15px 5px 15px;height: auto;"><i class="fa fa-chain"></i> Apply Through Wizard</button></a>
+			</div>
+			<div class="col-lg-5">
+				<a href="<?= Url::to(['caf/services-manual', 'projectId' => $project->id, 'type' => 'pre-operational']) ?>">
+					<button class="btn btn-warning  dim btn-large-dim btn-outline vwport" type="button"  style="font-size: 15px;padding: 10px 15px 5px 15px;height: auto;"><i class="fa fa-edit"></i> Manually through services list</button>
+				</a>
+			</div>
+		</div>
+	</div>
+	<?php } ?>
+
+</div>
+    
+<?php
+
+	if(isset($investorproject_detail)) {
+		if(count($investorproject_detail)) {
+	?>
+  <div class="ibox-content m-b-sm border-bottom">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox">
+					<div class="ibox-title">
+                        <h5>Application List for : <?php echo $project->project ?> </h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a> 
+                        </div>
+						<div style="text-align:left;float:left;clear:both;"><a href="<?= Url::to(['investor/timeline', 'id' => $project->id]) ?>">View Timeline</a></div>
+                    </div>
+					<div class="ibox-content" style="border-top:none;">
+						<div class="table-responsive">
+							<table class="table table-striped table-bordered table-hover dataTables-example" >
+											<thead>
+											<tr>
+												<th>ID</th>
+												<th>SLA Status</th>
+												<th>Application</th>
+												<th>Deptartment</th>
+												<th>Applied Date</th>
+												<th>Current Status</th><!-- 
+												<th>Time Limit</th> -->
+												<!-- <th>View</th> -->
+											</tr>			
+                                            </thead>
+                                            <tbody>
+					<?php
+					$i = 0;
+					$count_draft = 0;
+					$count_comp = 0;
+
+				foreach ($investorproject_detail as $service){
+					$i = $i+1; 
+					$service_id = $service->service_id;
+					$disabled = '';
+					$checked = '';
+					$img = '';
+					if($service->status) {
+						$disabled = 'disabled';
+						$checked = 'checked';
+					 if(($service->status==2) && ($service->completed=='')) {
+							$count_draft = $count_draft + 1;
+							$dartft = "yes";
+						}
+					else {
+							$dartft = "no";
+						}
+					}
+					if($service->completed) {
+						$compstst = "yes";
+						$count_comp = $count_comp + 1;
+					}
+					else {
+						$compstst = "no";
+					}
+				?>
+				<tr>
+					<td><?php echo $service_id = $service->service_id; ?></td>
+					<?php
+				
+					if(isset($services[$service_id]['sla'])) {
+
+						 $service_created = date_create(date('Y-m-d',strtotime($service->created)));
+						// $date_nq = $service_created;
+
+						 $current_date = date_create(date('Y-m-d'));
+						 $d_diff = date_diff($service_created, $current_date)->format("%R%a");
+						// $ = $diff_days;
+						 $d_diff_exceed = $d_diff - $services[$service_id]['sla'];
+
+						 //--per
+						 $nintypq =  0.9 * $services[$service_id]['sla'];
+						 $nintypq = floor($nintypq);
+						
+						 date_add($service_created, date_interval_create_from_date_string($nintypq . " days"));
+						 $nintypq_sla = date_format($service_created, "Y-m-d");
+					}
+					?>
+					<td <?php
+						if(($services[$service_id]['sla']) >= $d_diff) {
+							 if(($d_diff >= $nintypq)) {
+							    echo "class ='btn-warningmine' ";
+							 } 
+							 else {
+							     echo "class ='btn-primarymine' ";
+							 }
+						}
+					
+						if($nintypq > $d_diff) {
+							echo "class ='btn-primarymine' ";
+						}
+						if($services[$service_id]['sla'] < $d_diff) {
+							echo "class ='btn-dangermine' ";
+						}
+						?>	  > 
+						<strong>SLA(days) : <?=$services[$service_id]['sla'] ?></strong><br>
+						<?php if(isset($d_diff)) { echo $d_diff." days passed"; } ?>
+					</td>
+					<td><?php echo $services[$service_id]['name']; ?></td>                       
+					<td><?php echo $services[$service_id]['department']; ?></td>
+					<td><?php 
+						$s = $service->created;
+						$dt = new DateTime($s);
+						$date = $dt->format('d/m/Y');
+						echo $date; ?></td>
+					<td class="btn-success">
+						<?php 
+						if($dartft=="yes") { 
+							echo "Draft"; 
+						}
+						elseif($dartft=="no" && $compstst=="no"){ 
+							echo "Pending"; } 
+
+						if($compstst=="yes" && $dartft=="no"){ echo "Forwarded"; } ?>
+					</td>                <!-- 
+					<td><?php echo wordwrap($services[$service_id]['time_limit'], 30,"<br>\n"); ?></td>  -->
+				</tr>
+				<?php
+				}
+		
+		?>
+				</tbody>
+			<tfoot>
+				<tr>
+					<th>ID</th>	
+					<th>SLA Status</th>
+					<th>Application</th>
+					<th>Deptartment</th>
+					<th>Applied Date</th>
+					<th>Current Status</th><!-- 
+					<th>Time Limit</th> -->
+				</tr>
+			</tfoot>
+			</table>
+		</div>
+		</div>
+		</div>
+		</div>
+	</div>
+
+</div>
+
+<?php 	}
+		} ?>
+
+
+
+
+            </div> 
+
+
+       <style>
+    body.DTTT_Print {
+        background: #fff;
+
+    }
+    .DTTT_Print #page-wrapper {
+        margin: 0;
+        background:#fff;
+    }
+
+    button.DTTT_button, div.DTTT_button, a.DTTT_button {
+        border: 1px solid #e7eaec;
+        background: #fff;
+        color: #676a6c;
+        box-shadow: none;
+        padding: 6px 8px;
+    }
+    button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {
+        border: 1px solid #d2d2d2;
+        background: #fff;
+        color: #676a6c;
+        box-shadow: none;
+        padding: 6px 8px;
+    }
+	.dataTables_length{float:left; width:auto;}
+	.dataTables_filter, .DTTT_container{float:right;width:auto;}
+
+	 .DTTT_container{display:none;}
+	.dataTables_length{display:none;}
+
+    .dataTables_filter label {
+        margin-right: 5px;
+    } 
+</style>
+
+
+    <!-- Page-Level Scripts -->
+    <script>
+    </script>
+                <?php
+
+
+ 
+$this->registerCssFile(
+    '//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css',
+    [
+    'depends' => [\yii\bootstrap\BootstrapAsset::className()], 
+], 'css-style-services');
+
+
+$this->registerJsFile(
+    '//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js',
+    ['depends' => [\yii\web\JqueryAsset::className()]]
+);
+
+
+ 
+$this->registerJs(
+' 
+
+        $(document).ready(function() {
+            $(".dataTables-example").dataTable({
+                responsive: true,
+                "dom": \'T<"clear">lfrtip\',
+                "tableTools": {
+                    "sSwfPath": "js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
+                }
+            });
+ 
+        });
+
+
+
+$("#animation_box1").mouseenter(function(){
+                var animation = $(this).attr("data-animation");
+                var clasn = $(this).attr("class");
+                $("#animation_box1").removeAttr("class").attr("class", "");
+                var clasm = clasn+" "+animation;
+                $("#animation_box1").addClass("animated");
+                $("#animation_box1").addClass(clasm);
+                return false;
+            });
+$("#animation_box1").mouseleave(function(){
+                $("#animation_box1").removeAttr("class").attr("class", "");
+                $("#animation_box1").addClass("widget gray-bg p-lg text-center");
+            });
+            
+            $("#animation_box2").mouseenter(function(){
+                var animation = $(this).attr("data-animation");
+                var clasn = $(this).attr("class");
+                $("#animation_box2").removeAttr("class").attr("class", "");
+                var clasm = clasn+" "+animation;
+                $("#animation_box2").addClass("animated");
+                $("#animation_box2").addClass(clasm);
+                return false;
+            });
+$("#animation_box2").mouseleave(function(){
+                $("#animation_box2").removeAttr("class").attr("class", "");
+                $("#animation_box2").addClass("widget yellow-bg p-lg text-center");
+            });
+            
+            $("#animation_box3").mouseenter(function(){
+                var animation = $(this).attr("data-animation");
+                var clasn = $(this).attr("class");
+                $("#animation_box3").removeAttr("class").attr("class", "");
+                var clasm = clasn+" "+animation;
+                $("#animation_box3").addClass("animated");
+                $("#animation_box3").addClass(clasm);
+                return false;
+            });
+            
+$("#animation_box3").mouseleave(function(){
+                $("#animation_box3").removeAttr("class").attr("class", "");
+                $("#animation_box3").addClass("widget red-bg p-lg text-center");
+            });
+            
+            $("#animation_box4").mouseenter(function(){
+                var animation = $(this).attr("data-animation");
+                var clasn = $(this).attr("class");
+                $("#animation_box4").removeAttr("class").attr("class", "");
+                var clasm = clasn+" "+animation;
+                $("#animation_box4").addClass("animated");
+                $("#animation_box4").addClass(clasm);
+                return false;
+            });
+            
+$("#animation_box4").mouseleave(function(){
+                $("#animation_box4").removeAttr("class").attr("class", "");
+                $("#animation_box4").addClass("widget navy-bg p-lg text-center");
+            });
+            
+            $("#animation_box5").mouseenter(function(){
+                var animation = $(this).attr("data-animation");
+                var clasn = $(this).attr("class");
+                $("#animation_box5").removeAttr("class").attr("class", "");
+                var clasm = clasn+" "+animation;
+                $("#animation_box5").addClass("animated");
+                $("#animation_box5").addClass(clasm);
+                return false;
+            });
+            
+$("#animation_box5").mouseleave(function(){
+                $("#animation_box5").removeAttr("class").attr("class", "");
+                $("#animation_box5").addClass("widget blue-bg p-lg text-center");
+            });
+
+', View::POS_READY, 'my-button-handler');
+
+?>
